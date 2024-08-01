@@ -33,5 +33,7 @@ public class Define
         public string id;
         public string name;
         public float hp;
+        public int place;
+        public string weather;
     }
 }

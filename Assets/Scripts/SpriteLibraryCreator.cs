@@ -58,7 +58,7 @@ public class SpriteLibraryCreator : MonoBehaviour
             }
         }
         // Sprite Library Asset을 프로젝트에 저장합니다.
-        AssetDatabase.CreateAsset(spriteLibrary, $"Assets/Resoures/{m_name}.asset");
+        AssetDatabase.CreateAsset(spriteLibrary, $"Assets/Resources/{m_name}.asset");
         AssetDatabase.SaveAssets();
     }
 }

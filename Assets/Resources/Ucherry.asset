@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Ucherry
   m_EditorClassIdentifier: 
   m_Labels:
-  - m_Name: U_Idle
-    m_Hash: 177251786
+  - m_Name: Idle
+    m_Hash: 1008081451
     m_CategoryList:
     - m_Name: 0
       m_Hash: 886824737
@@ -31,8 +31,8 @@ MonoBehaviour:
     - m_Name: 4
       m_Hash: 867572536
       m_Sprite: {fileID: -1269446871, guid: b847189aa86e6ca478bc5676fa219ed6, type: 3}
-  - m_Name: U_Catch
-    m_Hash: 332464177
+  - m_Name: Catch
+    m_Hash: 78271584
     m_CategoryList:
     - m_Name: 0
       m_Hash: 886824737
@@ -49,8 +49,8 @@ MonoBehaviour:
     - m_Name: 4
       m_Hash: 867572536
       m_Sprite: {fileID: -721446230, guid: b847189aa86e6ca478bc5676fa219ed6, type: 3}
-  - m_Name: U_Walk
-    m_Hash: 455436938
+  - m_Name: Walk
+    m_Hash: 765711723
     m_CategoryList:
     - m_Name: 0
       m_Hash: 886824737
@@ -79,8 +79,8 @@ MonoBehaviour:
     - m_Name: 8
       m_Hash: 973100819
       m_Sprite: {fileID: -684786146, guid: b847189aa86e6ca478bc5676fa219ed6, type: 3}
-  - m_Name: U_Sit
-    m_Hash: 672292208
+  - m_Name: Sit
+    m_Hash: 854338608
     m_CategoryList:
     - m_Name: 0
       m_Hash: 886824737
@@ -97,8 +97,8 @@ MonoBehaviour:
     - m_Name: 4
       m_Hash: 867572536
       m_Sprite: {fileID: 2143959756, guid: b847189aa86e6ca478bc5676fa219ed6, type: 3}
-  - m_Name: U_Throw
-    m_Hash: 422132322
+  - m_Name: Throw
+    m_Hash: 240283187
     m_CategoryList:
     - m_Name: 0
       m_Hash: 886824737

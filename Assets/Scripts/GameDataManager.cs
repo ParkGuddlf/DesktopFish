@@ -12,10 +12,6 @@ public class GameDataManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-    }
-
-    private void Start()
-    {
         StartCoroutine(FishDataLoadGoogleSheet());
     }
 
@@ -31,42 +27,50 @@ public class GameDataManager : MonoBehaviour
     public List<bool> clothes = new List<bool> { true, false, false, false, false, false, false };
 
     //구글시트
-    public readonly string ADDRESS = "https://docs.google.com/spreadsheets/d/1I3j43QsjWIu1Hro2TAboQeWrvgd2TKXtsPQw8LNWdKg/export?format=tsv&range=A2:D";
+    readonly string ADDRESS = "https://docs.google.com/spreadsheets/d/1I3j43QsjWIu1Hro2TAboQeWrvgd2TKXtsPQw8LNWdKg/export?format=tsv&range=A2:F";
     string sheetData;
 
     public void SelectCharecter(int charNum)
     {
         lastCharecter = (Charecter)charNum;
         SpawnCharecter();
+        DataReset();
     }
 
     public void SpawnCharecter()
     {
         switch (lastCharecter)
         {
-            case Define.Charecter.Bule:
+            case Charecter.Bule:
                 Debug.Log("Blue");
                 break;
-            case Define.Charecter.Black:
+            case Charecter.Black:
                 Debug.Log("Black");
                 break;
-            case Define.Charecter.Pink:
+            case Charecter.Pink:
                 Debug.Log("Pink");
                 break;
             default:
                 break;
         }
         var charecter = Resources.Load<GameObject>("Prefabs/Charecter/Charecter");
-        Instantiate(charecter);
+        Transform parent = GameObject.Find("MapObjects").transform;
+        Instantiate(charecter, parent);
     }
 
-    void DataReset()
+    public void SetFishData()
+    {
+        FishingSystem.instance.SetFishCatchPossible();
+    }
+
+    public void DataReset()
     {
         lastPlace = Place.A;
         gold = 0;
         rod = new List<bool> { true, false, false, false, false, false, false };
         bobber = new List<bool> { true, false, false, false, false, false, false };
         clothes = new List<bool> { true, false, false, false, false, false, false };
+        SetFishData();
     }
 
 
@@ -79,7 +83,7 @@ public class GameDataManager : MonoBehaviour
             if (www.isDone)
                 sheetData = www.downloadHandler.text;
         }
-        DebugAsd();
+        DebugData();
     }
 
     public Dictionary<string, List<FishData>> fishdata = new Dictionary<string, List<FishData>>
@@ -91,7 +95,7 @@ public class GameDataManager : MonoBehaviour
         { "Spacial",new List<FishData>() }
     };
 
-    void DebugAsd()
+    void DebugData()
     {
         string[] rows = sheetData.Split('\n');
 
@@ -99,7 +103,7 @@ public class GameDataManager : MonoBehaviour
         foreach (string row in rows)
         {
             string[] cols = row.Split("\t");
-            var data = new FishData() { id = cols[1], name = cols[2], hp = float.Parse(cols[3]) };
+            var data = new FishData() { id = cols[1], name = cols[2], hp = float.Parse(cols[3]), place = int.Parse(cols[4]), weather = cols[5] };
             fishdata[cols[0]].Add(data);
         }
     }
