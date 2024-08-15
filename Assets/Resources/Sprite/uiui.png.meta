@@ -395,6 +395,174 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: CheckBox
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 148
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cfda7a08ea534424d951340a08fb87f3
+      internalID: -1464929221
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SliderHandle
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 132
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 236852431ced1ee4883bc47bcddcf2cc
+      internalID: 1664683847
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Check
+      rect:
+        serializedVersion: 2
+        x: 117
+        y: 149
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e2f533b4f755814983867252af1da11
+      internalID: 903503741
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: uiui_3
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 144
+        width: 32
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7eda5fd1f3ec3144eab8d0ced640891c
+      internalID: -336362817
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SliderBar
+      rect:
+        serializedVersion: 2
+        x: 117
+        y: 134
+        width: 65
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2cd5d24ed2449df40a145afe1ed65f60
+      internalID: -1532756018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ExBox
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 74
+        width: 79
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 645982511e606d649a1dba2a00ce01a9
+      internalID: -1057709054
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: uiui_7
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 54
+        width: 31
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 48ea892dfb9ec804a8e9d825b157ea58
+      internalID: -1752551032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: uiui_9
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 54
+        width: 31
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33d72800ab891d0488a4990651754d92
+      internalID: 814295546
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -406,12 +574,17 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      Check: -483105041
+      CheckBox: -776443788
+      ExBox: 652404095
       GuideButton: -837364209
       OptionButton: -349036533
       PlaceButton: 477382443
+      SliderBar: -1532756018
+      SliderHandle: 170800035
       StoreButton: 1321628623
-      uiui_0: -776443788
-      uiui_1: 170800035
+      uiui_0: -2103960592
+      uiui_1: 1316982342
       uiui_12: 988590154
       uiui_13: 1355429624
       uiui_14: -1846243620
@@ -420,12 +593,11 @@ TextureImporter:
       uiui_17: 2098271104
       uiui_18: -987289119
       uiui_19: -1934190096
-      uiui_2: -483105041
       uiui_20: -151550836
       uiui_21: -1070550580
       uiui_22: -1488102400
+      uiui_3: -336362817
       uiui_5: 1649905376
-      uiui_6: 652404095
       uiui_7: -1752551032
       uiui_8: 1274433092
       uiui_9: 814295546

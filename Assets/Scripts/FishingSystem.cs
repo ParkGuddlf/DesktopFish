@@ -1,11 +1,8 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Unity.Burst.Intrinsics;
 using UnityEngine;
 using static Define;
-using static UnityEditor.Progress;
 
 public class FishingSystem : MonoBehaviour
 {
@@ -15,6 +12,7 @@ public class FishingSystem : MonoBehaviour
     string[] rare = { "Common", "Nomal", "Rare", "Epic", "Spacial" };
 
     public Lean.Pool.LeanGameObjectPool objectPool;
+    AudioSource audioSource;
 
     public List<FishData> possibleCommon = new List<FishData>();
     public List<FishData> possibleNomal = new List<FishData>();
@@ -33,6 +31,13 @@ public class FishingSystem : MonoBehaviour
     private void Start()
     {
         objectPool = GetComponent<Lean.Pool.LeanGameObjectPool>();
+        audioSource = GetComponent<AudioSource>();
+    }
+
+    public void SetRodStatePercentage(string rodid)
+    {
+        percentage = GameDataManager.Instance.equipdata["Rod"].Find(x=> rodid == x.id).probabilitytable;
+        CharecterManager.instance.damage = GameDataManager.Instance.equipdata["Rod"].Find(x => rodid == x.id).attack;
     }
 
     public void SetFishCatchPossible()
@@ -56,7 +61,7 @@ public class FishingSystem : MonoBehaviour
                 break;
         }
     }
-
+    //낮과 날씨조건을 넣어준다
     void ListSetting(Place place)
     {
         if (possibleCommon.Count > 0)
@@ -127,6 +132,8 @@ public class FishingSystem : MonoBehaviour
 
     public void CatchFish()
     {
+        audioSource.clip = GameDataManager.Instance.resoureceManager.fishClips[currentFishData.size];
+        audioSource.Play();
         objectPool.Spawn(transform);
     }
     //무작위 데이터

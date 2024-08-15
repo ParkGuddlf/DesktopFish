@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.Burst.CompilerServices;
 using UnityEngine;
 using static Define;
@@ -14,13 +15,16 @@ public class FIshManager : MonoBehaviour
     WaitForSeconds delay = new WaitForSeconds(3f);
 
     [SerializeField] Rigidbody2D rigidbody2d;
-    Vector2 direction = new Vector2(5,15);
+    public SpriteRenderer spriteRenderer;
+    Vector2 direction = new Vector2(5, 15);
+
     private void OnEnable()
     {
         fishData = FishingSystem.instance.currentFishData;
+        spriteRenderer.sprite = GameDataManager.Instance.resoureceManager.fishSprites.FirstOrDefault(x => x.name.Equals(fishData.id));
         rigidbody2d.velocity = new Vector2(rigidbody2d.velocity.x, 0);
         rigidbody2d.AddForce(direction, ForceMode2D.Impulse);
-    }    
+    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -28,6 +32,8 @@ public class FIshManager : MonoBehaviour
         {
             FishingSystem.instance.objectPool.DespawnOldest();
             GameDataManager.Instance.gold += Gold();
+            if (!GameDataManager.Instance.saveGuideFish.Contains(fishData.id))
+                GameDataManager.Instance.AddGuide(fishData);
         }
     }
 
@@ -35,7 +41,7 @@ public class FIshManager : MonoBehaviour
     int Gold()
     {
         int resultGold = 0;
-        switch (fishRare)
+        switch (fishData.rare)
         {
             case "Common":
                 resultGold = Random.Range(1, 10);

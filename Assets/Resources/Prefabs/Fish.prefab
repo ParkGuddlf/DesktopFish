@@ -103,8 +103,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fishRare: 
   hp: 0
-  wight: 5
   rigidbody2d: {fileID: 3288024508074153621}
+  spriteRenderer: {fileID: 2975501167380309682}
+  fishSprites:
+  - {fileID: -769147495, guid: 63a8c44ffe3c9ce4b83433d772ff0c44, type: 3}
+  - {fileID: -1990504006, guid: 63a8c44ffe3c9ce4b83433d772ff0c44, type: 3}
+  - {fileID: 644520000, guid: 63a8c44ffe3c9ce4b83433d772ff0c44, type: 3}
+  - {fileID: 849643554, guid: 63a8c44ffe3c9ce4b83433d772ff0c44, type: 3}
+  - {fileID: -2126376137, guid: 63a8c44ffe3c9ce4b83433d772ff0c44, type: 3}
+  - {fileID: -378837410, guid: 63a8c44ffe3c9ce4b83433d772ff0c44, type: 3}
+  - {fileID: 796915821, guid: 63a8c44ffe3c9ce4b83433d772ff0c44, type: 3}
+  - {fileID: 904965374, guid: 63a8c44ffe3c9ce4b83433d772ff0c44, type: 3}
+  - {fileID: 2119275021, guid: 63a8c44ffe3c9ce4b83433d772ff0c44, type: 3}
+  - {fileID: 939070992, guid: 63a8c44ffe3c9ce4b83433d772ff0c44, type: 3}
+  - {fileID: -1633438237, guid: 63a8c44ffe3c9ce4b83433d772ff0c44, type: 3}
+  - {fileID: 2069325120, guid: 63a8c44ffe3c9ce4b83433d772ff0c44, type: 3}
+  - {fileID: 1727535002, guid: 63a8c44ffe3c9ce4b83433d772ff0c44, type: 3}
+  - {fileID: 407357346, guid: 63a8c44ffe3c9ce4b83433d772ff0c44, type: 3}
+  - {fileID: 72295785, guid: 63a8c44ffe3c9ce4b83433d772ff0c44, type: 3}
+  - {fileID: -39063342, guid: 63a8c44ffe3c9ce4b83433d772ff0c44, type: 3}
+  - {fileID: -1861212871, guid: 63a8c44ffe3c9ce4b83433d772ff0c44, type: 3}
+  - {fileID: 934580264, guid: 63a8c44ffe3c9ce4b83433d772ff0c44, type: 3}
 --- !u!50 &3288024508074153621
 Rigidbody2D:
   serializedVersion: 4
@@ -250,9 +269,9 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: e350b17ad3d4db64d903f578e6a9d5d5, type: 3}
+  m_Sprite: {fileID: -769147495, guid: 63a8c44ffe3c9ce4b83433d772ff0c44, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1, y: 2}
