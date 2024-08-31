@@ -504,10 +504,10 @@ TextureImporter:
       name: ExBox
       rect:
         serializedVersion: 2
-        x: 103
-        y: 74
-        width: 79
-        height: 48
+        x: 200
+        y: 43
+        width: 48
+        height: 79
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}

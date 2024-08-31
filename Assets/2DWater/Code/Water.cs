@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 namespace Bundos.WaterSystem
@@ -41,7 +42,6 @@ namespace Bundos.WaterSystem
         public int[] triangles;
         [HideInInspector]
         Vector2[] uvs;
-
 
         private void Start()
         {
@@ -186,26 +186,31 @@ namespace Bundos.WaterSystem
 
             mesh.RecalculateNormals();
         }
-
-        private void Ripple(Vector3 contactPoint, bool sink)
+        WaitForSeconds delay = new WaitForSeconds(1);
+        private IEnumerator Ripple(Vector3 contactPoint, bool sink)
         {
-            Instantiate(splashParticle, contactPoint, Quaternion.identity);
+            var asd = Managers.Resource.Instantiate("Particles/Splash");
+            asd.transform.position = contactPoint;
+            asd.transform.localScale = Vector3.one;
 
-            Vector3 localContactPoint = transform.InverseTransformPoint(contactPoint);
+            yield return delay;
+            Managers.Resource.Destroy(asd);
+            //Instantiate(splashParticle, contactPoint, Quaternion.identity);
+            //Vector3 localContactPoint = transform.InverseTransformPoint(contactPoint);
 
-            float currSmallestDistance = 10000f;
-            int index = 0;
-            for (int i = 0; i < numSprings; i++)
-            {
-                float distance = Mathf.Abs(Vector2.Distance(vertices[(2 * i) + 1], localContactPoint));
-                if (distance < currSmallestDistance)
-                {
-                    currSmallestDistance = distance;
-                    index = i;
-                }
-            }
+            //float currSmallestDistance = 10000f;
+            //int index = 0;
+            //for (int i = 0; i < numSprings; i++)
+            //{
+            //    float distance = Mathf.Abs(Vector2.Distance(vertices[(2 * i) + 1], localContactPoint));
+            //    if (distance < currSmallestDistance)
+            //    {
+            //        currSmallestDistance = distance;
+            //        index = i;
+            //    }
+            //}
 
-            springs[index].weightPosition = (sink ? Vector2.down : Vector2.up) * waveHeight;
+            //springs[index].weightPosition = (sink ? Vector2.down : Vector2.up) * waveHeight;
         }
 
         void OnTriggerEnter2D(Collider2D other)
@@ -220,7 +225,8 @@ namespace Bundos.WaterSystem
             {
                 Vector2 contactPoint = other.ClosestPoint(transform.position);
 
-                Ripple(contactPoint, false);
+                StartCoroutine(Ripple(contactPoint, false));
+                //Ripple(contactPoint, false);
             }
         }
 
@@ -235,7 +241,8 @@ namespace Bundos.WaterSystem
             if (otherRigidbody != null)
             {
                 Vector2 contactPoint = other.ClosestPoint(transform.position);
-                Ripple(contactPoint, true);
+                StartCoroutine(Ripple(contactPoint, false));
+                //Ripple(contactPoint, false);
             }
         }
     }

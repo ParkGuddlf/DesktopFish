@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Xml.Schema;
 using Unity.Burst.CompilerServices;
 using UnityEngine;
 using static Define;
@@ -14,12 +15,14 @@ public class FIshManager : MonoBehaviour
 
     WaitForSeconds delay = new WaitForSeconds(3f);
 
+    Vector2 startpos = new Vector2(5, -10);
     [SerializeField] Rigidbody2D rigidbody2d;
     public SpriteRenderer spriteRenderer;
-    Vector2 direction = new Vector2(5, 15);
+    Vector2 direction = new Vector2(5, 16);
 
     private void OnEnable()
     {
+        transform.position = startpos;
         fishData = FishingSystem.instance.currentFishData;
         spriteRenderer.sprite = GameDataManager.Instance.resoureceManager.fishSprites.FirstOrDefault(x => x.name.Equals(fishData.id));
         rigidbody2d.velocity = new Vector2(rigidbody2d.velocity.x, 0);
@@ -30,8 +33,12 @@ public class FIshManager : MonoBehaviour
     {
         if (collision.collider.name == "Ground")
         {
-            FishingSystem.instance.objectPool.DespawnOldest();
-            GameDataManager.Instance.gold += Gold();
+            Managers.Resource.Destroy(gameObject);
+            var gold = Gold();
+            GameDataManager.Instance.gold += gold;
+            var text = Managers.Resource.Instantiate("PopupTextCanvas");
+            text.GetComponent<TextPopup>().textChange($"<color=yellow>+{gold} gold<color=yellow>");
+            text.transform.position = transform.position;
             if (!GameDataManager.Instance.saveGuideFish.Contains(fishData.id))
                 GameDataManager.Instance.AddGuide(fishData);
         }
@@ -59,7 +66,7 @@ public class FIshManager : MonoBehaviour
                 resultGold = Random.Range(0, 0);
                 break;
         }
-        return resultGold;
+        return resultGold * GameDataManager.Instance.goldLevel;
     }
     //[Range(0f, 1f)]
     //public float value = 0f;

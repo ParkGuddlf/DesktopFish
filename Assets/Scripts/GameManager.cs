@@ -6,7 +6,7 @@ using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour
+public class GameManager : BaseScene
 {
     //싱글톤
     public static GameManager instance;
@@ -29,6 +29,8 @@ public class GameManager : MonoBehaviour
 
     public AudioSource bgmAudioSource;
     public AudioSource effectAudioSource;
+
+    public bool isStart;
     private void Awake()
     {
         if (instance == null)
@@ -61,7 +63,8 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         GameDataManager.Instance.SpawnCharecter();
         FishingSystem.instance.SetRodStatePercentage(GameDataManager.Instance.currentRod);
-        CharecterManager.instance.castingSpeed = GameDataManager.Instance.equipdata["Bobber"].Find(x => GameDataManager.Instance.currentbobber == x.id).castingspeed;
+        CharecterManager.instance.castingSpeed = 10- GameDataManager.Instance.castingLevel*0.5f;
+        CharecterManager.instance.attackDelay = 4.1f - GameDataManager.Instance.atkDelayLevel * 0.1f;
     }
 
     public void SaveQuit()
@@ -71,16 +74,15 @@ public class GameManager : MonoBehaviour
 
     public void SaveButton()
     {
+        Managers.Resource.Instantiate("PopupUI/Popup",MainCanvasManager.Instance.transform).GetComponent<PopupBase>().Textchange("데이터 저장이 완료 되었습니다.");
         SaveIsEasyAPI.SaveAll(selected);
-    }
-
-    public void Quit()
-    {
-        Application.Quit();
     }
 
     private IEnumerator SaveGamemanager()
     {
+        var popup = Managers.Resource.Instantiate("PopupUI/Popup", MainCanvasManager.Instance.transform);
+        popup.GetComponent<PopupBase>().Textchange("데이터 저장이 완료 되었습니다.");
+
         //저장중 화면 띄우기
         PlayerPrefs.SetInt("isMostTop", Convert.ToInt16(isMostTop));
         PlayerPrefs.SetFloat("bgmSound", bgmSound);
@@ -90,6 +92,7 @@ public class GameManager : MonoBehaviour
         PlayerPrefs.SetInt("screenHeight", screenHeight);
         SaveIsEasyAPI.SaveAll(selected);
         yield return SaveIsEasyAPI.IsSaved;
+        yield return !popup.activeSelf;
         Application.Quit();
     }
     //게임매니저 데이터 불러오기
@@ -101,5 +104,10 @@ public class GameManager : MonoBehaviour
         dubbleMode = PlayerPrefs.HasKey("dubbleMode") ? Convert.ToBoolean(PlayerPrefs.GetInt("dubbleMode")) : false;
         screenWidth = PlayerPrefs.HasKey("screenWidth") ? PlayerPrefs.GetInt("screenWidth") : 0;
         screenHeight = PlayerPrefs.HasKey("screenHeight") ? PlayerPrefs.GetInt("screenHeight") : 0;
+    }
+
+    public override void Clear()
+    {
+        instance.Clear();
     }
 }

@@ -96,7 +96,7 @@ public class CharecterController : MonoBehaviour
                         charecterManager.charecterState = CharecterState.Throw;                        
                         isThrow = true;
                     }
-                    if (timer > 1f)
+                    if (timer > charecterManager.throwDelay)
                     {
                         timer = 0.0f;
                         StartCoroutine(BobberPosition(true));
@@ -105,12 +105,12 @@ public class CharecterController : MonoBehaviour
                     }
                     break;
                 case FishingState.Catching:
-                    if (!isCatch && timer > 0.5f)
+                    if (!isCatch && timer > charecterManager.catchDelay)
                     {
                         FishingSystem.instance.FishData();
                         isCatch = true;
                     }
-                    if (timer > 1.5f)
+                    if (timer > charecterManager.attackDelay)
                     {
                         timer = 0.0f;
 

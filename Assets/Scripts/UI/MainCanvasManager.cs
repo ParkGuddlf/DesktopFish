@@ -1,4 +1,3 @@
-using Lean.Pool;
 using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
@@ -20,17 +19,21 @@ public class MainCanvasManager : MonoBehaviour
     public RectTransform targetPosition;
 
     [SerializeField] TMP_Text goldtext;
+    [Header("업그레이드 비용 텍스트")]
+    [SerializeField] TMP_Text goldCostText;
+    [SerializeField] TMP_Text attackDelayCosttext;
+    [SerializeField] TMP_Text casttingSpeedCosttext;
+    [SerializeField] TMP_Text specialCosttext;
     [Header("상점")]
     public GameObject itemBox;
     public Transform RodBox;
-    public Transform BobberBox;
-
-    public LeanGameObjectPool popupPool;
 
     bool isChangePlace;
     [Header("도감")]
     public GameObject guideBox;
     public Transform Guide;
+
+    public InfoBox infoBox;
     private void Awake()
     {
         Instance = this;
@@ -43,6 +46,10 @@ public class MainCanvasManager : MonoBehaviour
     private void Update()
     {
         goldtext.text = $"{GameDataManager.Instance.gold}";
+        casttingSpeedCosttext.text = GameDataManager.Instance.castingLevel >=15 ? $"채집속도\nMax" : $"채집속도\n{Cost(200, GameDataManager.Instance.castingLevel)}";
+        attackDelayCosttext.text = GameDataManager.Instance.atkDelayLevel >= 30 ? $"캐스팅주기\nMax" : $"캐스팅주기\n{Cost(100, GameDataManager.Instance.atkDelayLevel)}";
+        goldCostText.text = GameDataManager.Instance.goldLevel >= 15 ? $"골드획득량\nMax" : $"골드획득량\n{Cost(1000, GameDataManager.Instance.goldLevel)}";
+        specialCosttext.text = GameDataManager.Instance.spacialLevel >= 30 ? $"스페셜등급\nMax" : $"스페셜등급\n{Cost(500, GameDataManager.Instance.spacialLevel)}";
     }
 
     public void PanelOnOff(int num)
@@ -83,27 +90,76 @@ public class MainCanvasManager : MonoBehaviour
             Instantiate(itemBox, RodBox).GetComponent<ItemBoxInfo>().SetInfo(go, GameDataManager.Instance.rod[go.id], "Rod", sprite);
             count++;
         }
-        count = 0;
-        foreach (EquipData go in GameDataManager.Instance.equipdata["Bobber"])
-        {
-            Sprite sprite = GameDataManager.Instance.resoureceManager.iconSprites.FirstOrDefault(x => x.name.Equals(go.id));
-            Instantiate(itemBox, BobberBox).GetComponent<ItemBoxInfo>().SetInfo(go, GameDataManager.Instance.bobber[go.id], "Bobber", sprite);
-            count++;
-        }
     }
 
+    public void StateButton(int num)
+    {
+        //돈이없을때랑 최대레벨일때는 리턴으로해주세용
+        int cost = 0;
+        switch (num)
+        {
+            case 0:
+                if (GameDataManager.Instance.castingLevel < 15)
+                {
+                    cost = Cost(200, GameDataManager.Instance.castingLevel);
+                    if (cost <= GameDataManager.Instance.gold)
+                    {
+                        GameDataManager.Instance.gold -= cost;
+                        GameDataManager.Instance.castingLevel += 1;
+                    }
+                }
+                break;
+            case 1:
+                if (GameDataManager.Instance.goldLevel < 15)
+                {
+                    cost = Cost(1000, GameDataManager.Instance.goldLevel);
+                    if (cost <= GameDataManager.Instance.gold)
+                    {
+                        GameDataManager.Instance.gold -= cost;
+                        GameDataManager.Instance.goldLevel += 1;
+                    }
+                }
+                break;
+            case 2:
+                if (GameDataManager.Instance.spacialLevel < 30)
+                {
+                    cost = Cost(500, GameDataManager.Instance.spacialLevel);
+                    if (cost <= GameDataManager.Instance.gold)
+                    {
+                        GameDataManager.Instance.gold -= cost;
+                        GameDataManager.Instance.spacialLevel += 1;
+                    }
+                }
+                break;
+            case 3:
+                if (GameDataManager.Instance.atkDelayLevel < 30)
+                {
+                    cost = Cost(100, GameDataManager.Instance.atkDelayLevel);
+                    if (cost <= GameDataManager.Instance.gold)
+                    {
+                        GameDataManager.Instance.gold -= cost;
+                        GameDataManager.Instance.atkDelayLevel += 1;
+                    }
+                }
+                break;
+        }
+    }
+    int Cost(int baseCost, int data)
+    {
+        return (int)(baseCost * Mathf.Pow(data, 1.5f));
+    }
+    //장소변경
     public void PlaceChange(int placeNum)
     {
         if (isChangePlace)
             return;
         isChangePlace = true;
-        GameDataManager.Instance.lastPlace = (Place)placeNum;
-        FishingSystem.instance.SetFishCatchPossible();
-        StartCoroutine(PlaceChageCo());
+        StartCoroutine(PlaceChageCo(placeNum));
         //사운드도 변경해준다
     }
+
     [SerializeField] Image fadeImage;
-    IEnumerator PlaceChageCo()
+    IEnumerator PlaceChageCo(int placeNum)
     {
         WaitForSeconds delay = new WaitForSeconds(1f);
         WaitForSeconds fadedelay = new WaitForSeconds(0.05f);
@@ -125,6 +181,8 @@ public class MainCanvasManager : MonoBehaviour
             fadeImage.color = black;
             yield return fadedelay;
         }
+        GameDataManager.Instance.lastPlace = (Place)placeNum;
+        FishingSystem.instance.SetFishCatchPossible();
         for (int i = 0; i < 10; i++)
         {
             black.a -= 0.1f * i;
@@ -154,8 +212,8 @@ public class MainCanvasManager : MonoBehaviour
     //popup생성
     public void PopUPSpawn(string text)
     {
-        PopupBase popup = popupPool.Spawn(popupPool.transform).GetComponent<PopupBase>();
+        PopupBase popup = Managers.Resource.Instantiate("PopupUI/Popup", transform, 1).GetComponent<PopupBase>();
         popup.Textchange(text);
     }
-    
+
 }

@@ -15,5 +15,7 @@ public class ResoureceManager : MonoBehaviour
     [Header("생선이미지")]
     public Sprite[] fishSprites;
     [Header("아이콘이미지")]
-    public Sprite[] iconSprites;
+    public Sprite[] iconSprites; 
+    [Header("아이템이미지")]
+    public Sprite[] seaObject;
 }

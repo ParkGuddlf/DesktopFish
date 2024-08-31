@@ -1,4 +1,3 @@
-using Lean.Pool;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -39,7 +38,7 @@ public class PopupBase : MonoBehaviour
             rectTransform.anchoredPosition = Vector2.Lerp(rectTransform.anchoredPosition, startpos, 0.5f);
             yield return moveDelay;
         }
-        GetComponentInParent<LeanGameObjectPool>().DespawnOldest();
+        Managers.Resource.Destroy(gameObject);
     }
 
     public void Textchange(string text)

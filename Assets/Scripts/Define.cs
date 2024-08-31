@@ -6,11 +6,19 @@ using UnityEngine;
 
 public class Define
 {
+    public enum DateTime
+    {
+        all = 0,
+        morning = 1,
+        night = 2,
+    }
+
     public enum Weather
     {
-        sun = 0,
-        rain = 1,
-        snew = 2,
+        nomal =0,
+        sun = 1,
+        rain = 2,
+        snow = 3,
     }
 
     public enum Place
@@ -46,6 +54,7 @@ public class Define
         public int place;
         public string weather;
         public int size;
+        public string time;
     }
     public class EquipData
     {
@@ -55,5 +64,24 @@ public class Define
         public List<string> probabilitytable;
         public int attack;
         public int castingspeed;
+    }
+
+    public enum MouseEvent
+    {
+        Press,
+        PointerDown,
+        PointerUp,
+        Click,
+    }
+    public enum Scene
+    {
+        Unknown,
+        SettingScene,
+        GameScene,
+    }
+    public enum UIEvent
+    {
+        Click,
+        Drag,
     }
 }

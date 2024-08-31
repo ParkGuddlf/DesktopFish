@@ -13,7 +13,7 @@ public class CharecterManager : MonoBehaviour
     public CharecterState charecterState
     {
         get { return charecterstate; }
-        set 
+        set
         {
             charecterstate = value;
             charecterAnimation.AnimaControll(value);
@@ -27,7 +27,10 @@ public class CharecterManager : MonoBehaviour
     [SerializeField]
     SpriteLibraryAsset[] spriteLibraryAsset;
 
-    public int castingSpeed;
+    public float castingSpeed;
+    public float attackDelay;
+    public float throwDelay = 1f;
+    public float catchDelay = 0.5f;
     public int damage;
 
     public AudioSource audioSource;
@@ -35,7 +38,7 @@ public class CharecterManager : MonoBehaviour
 
     private void Awake()
     {
-        if(instance == null)
+        if (instance == null)
             instance = this;
         charecterAnimation = GetComponent<CharecterAnimation>();
         charecterController = GetComponent<CharecterController>();
@@ -64,7 +67,7 @@ public class CharecterManager : MonoBehaviour
     private void Update()
     {
         audioSource.volume = GameManager.instance.effectSound;
-        bobberSource.volume = GameManager.instance.effectSound*0.5f;
+        bobberSource.volume = GameManager.instance.effectSound * 0.5f;
     }
 
 }

@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using static Define;
 
-public class ItemBoxInfo : MonoBehaviour
+public class ItemBoxInfo : UIInfoData
 {
     EquipData equipInfo;
     string itemKind;
@@ -20,20 +20,7 @@ public class ItemBoxInfo : MonoBehaviour
 
     private void FixedUpdate()
     {
-        switch (itemKind)
-        {
-            case "Rod":
-                equipObj.SetActive(GameDataManager.Instance.currentRod.Equals(equipInfo.id));
-                //낚시 확률조정
-                break;
-            case "Bobber":
-                equipObj.SetActive(GameDataManager.Instance.currentbobber.Equals(equipInfo.id));
-                //캐릭스텟조정
-                break;
-            default:
-                equipObj.SetActive(GameDataManager.Instance.currentRod.Equals(equipInfo.id));
-                break;
-        }
+        equipObj.SetActive(GameDataManager.Instance.currentRod.Equals(equipInfo.id));
     }
 
     public void SetInfo(EquipData itemIfo, bool isbuy, string item, Sprite sprite)
@@ -42,34 +29,37 @@ public class ItemBoxInfo : MonoBehaviour
         price = itemIfo.price;
         priceText.text = price.ToString();
         isBuy = isbuy;
-        itemKind=item;
+        itemKind = item;
         image.sprite = sprite;
+        data_Name = equipInfo.name;
+
+        int maxProset = GameDataManager.Instance.spacialLevel + 10000;
+
+        data_info = $"커  먼 {(Mathf.Floor((float.Parse(itemIfo.probabilitytable[0]) / maxProset) * 1000)) / 10} %\n" +
+        $"노  말 {(Mathf.Floor((float.Parse(itemIfo.probabilitytable[1]) / maxProset) * 1000)) / 10} %\n" +
+        $"레  어 {(Mathf.Floor((float.Parse(itemIfo.probabilitytable[2]) / maxProset) * 1000)) / 10} %\n" +
+        $"에  픽 {(Mathf.Floor((float.Parse(itemIfo.probabilitytable[3]) / maxProset) * 1000)) / 10} %\n";
+        //$"스페셜 {GameDataManager.Instance.spacialLevel}\n";
+
+        data_sprite = sprite;
     }
     //장비별로 
     public void ButtonSystem()
     {
-        if(isBuy == false)
+        if (isBuy == false)
         {
             if (price <= GameDataManager.Instance.gold)
             {
                 GameDataManager.Instance.gold -= price;
-                switch (itemKind)
-                {
-                    case "Rod":
-                        GameDataManager.Instance.rod[equipInfo.id] = true;
-                        break;
-                    case "Bobber":
-                        GameDataManager.Instance.bobber[equipInfo.id] = true;
-                        break;
-                    default:
-                        break;
-                }
+
+                GameDataManager.Instance.rod[equipInfo.id] = true;
+
                 isBuy = true;
             }
             else
                 return;
         }
-            
+
 
         switch (itemKind)
         {
@@ -78,7 +68,7 @@ public class ItemBoxInfo : MonoBehaviour
                 GameDataManager.Instance.currentRod = equipInfo.id;
                 break;
             case "Bobber":
-                GameDataManager.Instance.currentbobber = equipInfo.id;
+                CharecterManager.instance.castingSpeed = equipInfo.castingspeed;
                 break;
             default:
                 break;

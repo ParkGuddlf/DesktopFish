@@ -8,10 +8,9 @@ public class FishingSystem : MonoBehaviour
 {
     public static FishingSystem instance;
 
-    public List<string> percentage = new List<string> { "10000", "0", "0", "0", "0", "1" };
+    public List<string> percentage = new List<string> { "10000", "0", "0", "0", "0" };
     string[] rare = { "Common", "Nomal", "Rare", "Epic", "Spacial" };
 
-    public Lean.Pool.LeanGameObjectPool objectPool;
     AudioSource audioSource;
 
     public List<FishData> possibleCommon = new List<FishData>();
@@ -30,13 +29,13 @@ public class FishingSystem : MonoBehaviour
 
     private void Start()
     {
-        objectPool = GetComponent<Lean.Pool.LeanGameObjectPool>();
         audioSource = GetComponent<AudioSource>();
     }
 
     public void SetRodStatePercentage(string rodid)
     {
-        percentage = GameDataManager.Instance.equipdata["Rod"].Find(x=> rodid == x.id).probabilitytable;
+        percentage = GameDataManager.Instance.equipdata["Rod"].Find(x => rodid == x.id).probabilitytable;
+        percentage[4] = $"{GameDataManager.Instance.spacialLevel}";
         CharecterManager.instance.damage = GameDataManager.Instance.equipdata["Rod"].Find(x => rodid == x.id).attack;
     }
 
@@ -44,9 +43,6 @@ public class FishingSystem : MonoBehaviour
     {
         switch (GameDataManager.Instance.lastPlace)
         {
-            case Place.A:
-                ListSetting(Place.A);
-                break;
             case Place.B:
                 ListSetting(Place.B);
                 break;
@@ -74,47 +70,40 @@ public class FishingSystem : MonoBehaviour
             possibleEpic.Clear();
         if (possibleSpacial.Count > 0)
             possibleSpacial.Clear();
+        CurrentPossibleCatchFish(GameDataManager.Instance.fishdata["Common"], possibleCommon);
+        CurrentPossibleCatchFish(GameDataManager.Instance.fishdata["Nomal"], possibleNomal);
+        CurrentPossibleCatchFish(GameDataManager.Instance.fishdata["Rare"], possibleRare);
+        CurrentPossibleCatchFish(GameDataManager.Instance.fishdata["Epic"], possibleEpic);
+        CurrentPossibleCatchFish(GameDataManager.Instance.fishdata["Spacial"], possibleSpacial);
+    }
 
-        foreach (var common in GameDataManager.Instance.fishdata["Common"])
+    void CurrentPossibleCatchFish(List<FishData> fishdata, List<FishData> addlist)
+    {
+        var place = GameDataManager.Instance.lastPlace;
+        string weather = GameDataManager.Instance.lastWeather.ToString();
+        string dayNight = GameDataManager.Instance.dayNight.ToString();
+        foreach (var common in fishdata)
         {
-            if(common.place == (int)place)
-                possibleCommon.Add(common);
-        }
-        foreach (var noaml in GameDataManager.Instance.fishdata["Nomal"])
-        {
-            if (noaml.place == (int)place)
-                possibleNomal.Add(noaml);
-        }
-        foreach (var rare in GameDataManager.Instance.fishdata["Rare"])
-        {
-            if (rare.place == (int)place)
-                possibleRare.Add(rare);
-        }
-        foreach (var epic in GameDataManager.Instance.fishdata["Epic"])
-        {
-            if (epic.place == (int)place)
-                possibleEpic.Add(epic);
-        }
-        foreach (var spcial in GameDataManager.Instance.fishdata["Spacial"])
-        {
-            if (spcial.place == (int)place)
-                possibleSpacial.Add(spcial);
+            if (common.place == (int)place || common.place == 0)
+                if (common.weather == weather || common.weather == "nomal")
+                    if (common.time == dayNight || common.time == "all")
+                        addlist.Add(common);
         }
     }
 
     public void FishData()
     {
         string rareStr = rare[DrawElement(percentage)];
-        
+
         switch (rareStr)
         {
             case "Common":
-                currentFishData = possibleCommon[UnityEngine.Random.Range(0,possibleCommon.Count)];
+                currentFishData = possibleCommon[UnityEngine.Random.Range(0, possibleCommon.Count)];
                 break;
             case "Nomal":
                 currentFishData = possibleNomal[UnityEngine.Random.Range(0, possibleNomal.Count)];
                 break;
-            case "Rare":        
+            case "Rare":
                 currentFishData = possibleRare[UnityEngine.Random.Range(0, possibleRare.Count)];
                 break;
             case "Epic":
@@ -134,7 +123,7 @@ public class FishingSystem : MonoBehaviour
     {
         audioSource.clip = GameDataManager.Instance.resoureceManager.fishClips[currentFishData.size];
         audioSource.Play();
-        objectPool.Spawn(transform);
+        Managers.Resource.Instantiate("Fish/Fish",transform,1);
     }
     //무작위 데이터
     int DrawElement(List<string> elements)
