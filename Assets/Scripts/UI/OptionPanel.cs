@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,9 +11,19 @@ public class OptionPanel : MonoBehaviour
     public Toggle MostTopToggle;
     public Toggle DobbleToggle;
 
+    public TMP_Dropdown dropdown;
+
     private void Start()
     {
+        List<TMP_Dropdown.OptionData> optionList = new List<TMP_Dropdown.OptionData>();
+        for (int i = 0; i < Display.displays.Length; i++)
+        {
+            optionList.Add(new TMP_Dropdown.OptionData($"È­¸é {i}"));
+        }
+        dropdown.AddOptions(optionList);
+        ChangedDisPlay();
         UIRest();
+
     }
 
     public void UIRest()
@@ -41,6 +52,6 @@ public class OptionPanel : MonoBehaviour
     }
     public void ChangedDisPlay()
     {
-        Camera.main.GetComponent<TransparentWindow>().MoveWindowToNextDisplay();
+        Camera.main.GetComponent<TransparentWindow>().MoveWindowToNextDisplay(dropdown.value);
     }
 }

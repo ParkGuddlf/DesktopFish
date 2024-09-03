@@ -105,7 +105,7 @@ public class TransparentWindow : MonoBehaviour
 #if !UNITY_EDITOR
 		fWidth = screenResolution.x;
 		int titleBarHeight = GetSystemMetrics(SM_CYCAPTION);
-		fHeight = screenResolution.y-titleBarHeight*2;
+		fHeight = screenResolution.y-40;
 		margins = new Rectangle() {Left = -1};
 		hwnd = GetActiveWindow();
 
@@ -136,24 +136,38 @@ public class TransparentWindow : MonoBehaviour
             SetClickThrough();
         }
     }
-    private int currentDisplayIndex = 0;
-    public void MoveWindowToNextDisplay()
-    {
-        currentDisplayIndex = (currentDisplayIndex + 1) % Display.displays.Length;
-        Debug.Log("Moving window to display: " + currentDisplayIndex);
 
-        // 새 디스플레이의 시작 좌표를 계산
+    public void MoveWindowToNextDisplay(int value)
+    {                
+        // 각 디스플레이의 해상도 및 위치를 가져옴
         int newX = 0;
-        int newY = 0;
 
-        // 선택된 디스플레이의 좌표를 계산
-        for (int i = 0; i < currentDisplayIndex; i++)
+        // 선택된 디스플레이의 절대 좌표를 가져옴
+        for (int i = 0; i < value; i++)
         {
             newX += Display.displays[i].systemWidth;
         }
 
-        // 선택된 디스플레이의 좌표로 창 이동
-        SetWindowPos(hwnd, HWND_TOPMOST, newX, newY, fWidth, fHeight, 32 | 64);
+        screenResolution = new Vector2Int(Display.displays[value].systemWidth, Display.displays[value].systemHeight);
+        Screen.SetResolution(screenResolution.x, screenResolution.y, fullscreen ? FullScreenMode.FullScreenWindow : FullScreenMode.Windowed);
+
+
+#if !UNITY_EDITOR
+		fWidth = screenResolution.x;
+		int titleBarHeight = GetSystemMetrics(SM_CYCAPTION);
+		fHeight = screenResolution.y-40;
+		margins = new Rectangle() {Left = -1};
+		hwnd = GetActiveWindow();
+
+		if (GetWindowRect(hwnd, out windowRect))
+		{
+			Debug.LogError("Couldn't get Window Rect");
+		}
+
+		SetWindowLong(hwnd, GWL_STYLE, WS_POPUP | WS_VISIBLE);
+		SetWindowPos(hwnd, GameManager.instance.isMostTop ? HWND_TOPMOST : HWND_NOTOPMOST, newX, windowRect.Top, fWidth, fHeight, 32 | 64);
+		DwmExtendFrameIntoClientArea(hwnd, ref margins);
+#endif
     }
 
 

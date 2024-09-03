@@ -37,6 +37,7 @@ public class SeaObject : MonoBehaviour
         var text = Managers.Resource.Instantiate("PopupTextCanvas");
         text.GetComponent<TextPopup>().textChange($"<color=yellow>+{gold} gold<color=yellow>");
         text.transform.position = transform.position;
+        text.transform.localScale = Vector3.one * 0.01f;
         Managers.Resource.Destroy(gameObject);
     }
 }
