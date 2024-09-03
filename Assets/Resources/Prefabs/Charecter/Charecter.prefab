@@ -111,9 +111,14 @@ MonoBehaviour:
   - {fileID: 11400000, guid: baf176e5daa41194dbb1f28f2ff7efff, type: 2}
   - {fileID: 11400000, guid: a29621c527ab8f645be7ad5a1f0e049e, type: 2}
   castingSpeed: 10
+  attackDelay: 0
+  throwDelay: 1
+  catchDelay: 0.5
   damage: 1
   audioSource: {fileID: 0}
   bobberSource: {fileID: 5752035493883509763}
+  FeverGage: 0
+  isFever: 0
 --- !u!82 &1349433600259535217
 AudioSource:
   m_ObjectHideFlags: 0
@@ -285,7 +290,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1165309483
   m_SortingLayer: 3
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_Sprite: {fileID: 775253381, guid: b847189aa86e6ca478bc5676fa219ed6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

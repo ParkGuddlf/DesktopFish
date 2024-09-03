@@ -30,7 +30,7 @@ public class TransparentWindow : MonoBehaviour
     [SerializeField] Vector2Int screenResolution = new Vector2Int(1280, 720);
 
     [Tooltip("The framerate the overlay should try to run at")] //
-    [SerializeField] int targetFrameRate = 30;
+    [SerializeField] int targetFrameRate = 60;
 
 
     /////////////////////
@@ -133,17 +133,27 @@ public class TransparentWindow : MonoBehaviour
         }
         if (GameManager.instance != null)
         {
-            if (Input.GetKeyDown(KeyCode.Q))
-            {
-                GameManager.instance.isMostTop = true;
-            }
-            if (Input.GetKeyDown(KeyCode.W))
-            {
-                GameManager.instance.isMostTop = false;
-            }
-
             SetClickThrough();
         }
+    }
+    private int currentDisplayIndex = 0;
+    public void MoveWindowToNextDisplay()
+    {
+        currentDisplayIndex = (currentDisplayIndex + 1) % Display.displays.Length;
+        Debug.Log("Moving window to display: " + currentDisplayIndex);
+
+        // 새 디스플레이의 시작 좌표를 계산
+        int newX = 0;
+        int newY = 0;
+
+        // 선택된 디스플레이의 좌표를 계산
+        for (int i = 0; i < currentDisplayIndex; i++)
+        {
+            newX += Display.displays[i].systemWidth;
+        }
+
+        // 선택된 디스플레이의 좌표로 창 이동
+        SetWindowPos(hwnd, HWND_TOPMOST, newX, newY, fWidth, fHeight, 32 | 64);
     }
 
 

@@ -39,4 +39,8 @@ public class OptionPanel : MonoBehaviour
     {
         GameManager.instance.dubbleMode = DobbleToggle.isOn;
     }
+    public void ChangedDisPlay()
+    {
+        Camera.main.GetComponent<TransparentWindow>().MoveWindowToNextDisplay();
+    }
 }

@@ -35,7 +35,22 @@ public class CharecterManager : MonoBehaviour
 
     public AudioSource audioSource;
     public AudioSource bobberSource;
-
+    [SerializeField] int FeverGage;
+    public int feverGage
+    {
+        get { return FeverGage; }
+        set
+        {
+            FeverGage = value;
+            if (FeverGage >= 110)
+            {
+                isFever= true;
+                Fever();
+                Invoke("StateReset",8f);
+            }
+        }
+    }
+    public bool isFever;
     private void Awake()
     {
         if (instance == null)
@@ -66,8 +81,38 @@ public class CharecterManager : MonoBehaviour
 
     private void Update()
     {
-        audioSource.volume = GameManager.instance.effectSound;
-        bobberSource.volume = GameManager.instance.effectSound * 0.5f;
+        if (!isFever)
+        {
+            audioSource.volume = GameManager.instance.effectSound;
+            bobberSource.volume = GameManager.instance.effectSound * 0.5f;
+        }
+        else
+        {
+            audioSource.volume =0;
+            bobberSource.volume = 0;
+        }
     }
 
+    void Fever()
+    {
+        Managers.Resource.Instantiate("Fever");
+        GameManager.instance.bgmAudioSource.clip = GameDataManager.Instance.resoureceManager.bgmClips[1];
+        GameManager.instance.bgmAudioSource.Play();
+        castingSpeed = 0;
+        attackDelay = 0;
+        throwDelay = 0.1f;
+        catchDelay = 0;
+    }
+    void StateReset()
+    {
+        castingSpeed = 10 - GameDataManager.Instance.castingLevel * 0.5f;
+        attackDelay = 4.1f - GameDataManager.Instance.atkDelayLevel * 0.1f;
+        throwDelay = 1f;
+        catchDelay = 0.5f;
+        feverGage = 0;
+        isFever = false;
+        Managers.Resource.Destroy(GameObject.Find("Fever"));
+        GameManager.instance.bgmAudioSource.clip = GameDataManager.Instance.resoureceManager.bgmClips[0];
+        GameManager.instance.bgmAudioSource.Play();
+    }
 }

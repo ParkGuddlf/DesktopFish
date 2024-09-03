@@ -217,7 +217,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clickLayerMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 503
   useSystemInput: 0
   fullscreen: 0
   customResolution: 0

@@ -14,7 +14,7 @@ public class SeaObject : MonoBehaviour
 
     private void OnEnable()
     {
-        spriteRenderer.sprite = GameDataManager.Instance.resoureceManager.seaObject[Random.Range(0, 4)];
+        spriteRenderer.sprite = GameDataManager.Instance.resoureceManager.seaObject[Random.Range(0, 5)];
 
         Vector2 screenBoundsBottomLeft = Camera.main.ScreenToWorldPoint(new Vector2(0, 0));
         Vector2 screenBoundsTopRight = Camera.main.ScreenToWorldPoint(new Vector2(Screen.width*0.5f, Screen.height));

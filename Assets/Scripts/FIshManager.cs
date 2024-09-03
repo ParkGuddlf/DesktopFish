@@ -39,8 +39,17 @@ public class FIshManager : MonoBehaviour
             var text = Managers.Resource.Instantiate("PopupTextCanvas");
             text.GetComponent<TextPopup>().textChange($"<color=yellow>+{gold} gold<color=yellow>");
             text.transform.position = transform.position;
+            text.transform.localScale = Vector3.one*0.01f;
+            if (!CharecterManager.instance.isFever)
+                CharecterManager.instance.feverGage += 1;
+
             if (!GameDataManager.Instance.saveGuideFish.Contains(fishData.id))
+            {
                 GameDataManager.Instance.AddGuide(fishData);
+                MainCanvasManager.Instance.guidArray.FirstOrDefault(x => x.name == fishData.id).GetComponent<GuideBoxInfo>().newFishMark.SetActive(true);
+                MainCanvasManager.Instance.NewFish(fishData.id);
+                MainCanvasManager.Instance.newFishMark.SetActive(true);
+            }
         }
     }
 

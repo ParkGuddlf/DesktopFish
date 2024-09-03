@@ -4,6 +4,7 @@ using UnityEngine;
 using static Define;
 using UnityEngine.Rendering.Universal;
 
+//시간마다 나오는 이벤트
 public class WeatherLight : MonoBehaviour
 {
     public float dayLength = 10.0f;
@@ -54,7 +55,7 @@ public class WeatherLight : MonoBehaviour
             gameDataManager.spownTimer += Time.deltaTime;
             if (gameDataManager.weatherTimer / 120f >= 1)
             {
-                gameDataManager.lastWeather = (Weather)Random.Range(1, 3);
+                gameDataManager.lastWeather = (Weather)Random.Range(1, 4);
                 gameDataManager.weatherTimer = 0;
             }
             if (gameDataManager.dayTimer / 60f >= 1)
@@ -67,12 +68,10 @@ public class WeatherLight : MonoBehaviour
                 Managers.Resource.Instantiate("SeaObject");
                 gameDataManager.spownTimer = 0;
             }
-        }
 
-        if (gameDataManager.dayTimer > 55)
-        {
             light2D.color = Color.Lerp(light2D.color, TargetColor(), 0.05f);
         }
+
         switch (gameDataManager.lastWeather)
         {
             case Weather.sun:
@@ -96,17 +95,17 @@ public class WeatherLight : MonoBehaviour
 
     Color TargetColor()
     {
-        nightLight.SetActive(gameDataManager.dayNight == DateTime.morning);
+        nightLight.SetActive(gameDataManager.dayNight != DateTime.morning);
         switch (gameDataManager.lastWeather)
         {
             case Weather.sun:
-                return gameDataManager.dayNight != DateTime.morning ? dayColor : nightColor;
+                return gameDataManager.dayNight == DateTime.morning ? dayColor : nightColor;
             case Weather.rain:
-                return gameDataManager.dayNight != DateTime.morning ? raindayColor : rainnightColor;
+                return gameDataManager.dayNight == DateTime.morning ? raindayColor : rainnightColor;
             case Weather.snow:
-                return gameDataManager.dayNight != DateTime.morning ? snowdayColor : snownightColor;
+                return gameDataManager.dayNight == DateTime.morning ? snowdayColor : snownightColor;
             default:
-                return gameDataManager.dayNight != DateTime.morning ? dayColor : nightColor;
+                return gameDataManager.dayNight == DateTime.morning ? dayColor : nightColor;
         }
     }
 }

@@ -361,6 +361,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da04e47d0c69ea249a3dfc8427728cba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  num: 0
+  data_Name: 
+  data_info: 
+  data_sprite: {fileID: 0}
   image: {fileID: 6822860945525906282}
   priceText: {fileID: 1368918273138701266}
   price: 0
@@ -487,7 +491,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -350523083, guid: fce531df0f50fa642bd65e196e930bf8, type: 3}
+  m_Sprite: {fileID: -2085997652, guid: 930f2a4bee0f62e44973c084640b4edf, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

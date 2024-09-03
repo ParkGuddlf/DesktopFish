@@ -9,6 +9,8 @@ public class ResoureceManager : MonoBehaviour
     public AudioClip[] fishClips;
     [Header("배경음악")]
     public AudioClip[] bgmClips;
+    //구매사운드
+    //새로운 물고기 잡을때 나오는 유아이 빵빠래사운드
     [Header("유아이소리")]
     public AudioClip[] uiClips;
 

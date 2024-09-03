@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Xml.Schema;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -32,6 +33,7 @@ public class MainCanvasManager : MonoBehaviour
     [Header("도감")]
     public GameObject guideBox;
     public Transform Guide;
+    public GameObject newFishMark;
 
     public InfoBox infoBox;
     private void Awake()
@@ -46,7 +48,7 @@ public class MainCanvasManager : MonoBehaviour
     private void Update()
     {
         goldtext.text = $"{GameDataManager.Instance.gold}";
-        casttingSpeedCosttext.text = GameDataManager.Instance.castingLevel >=15 ? $"채집속도\nMax" : $"채집속도\n{Cost(200, GameDataManager.Instance.castingLevel)}";
+        casttingSpeedCosttext.text = GameDataManager.Instance.castingLevel >= 15 ? $"채집속도\nMax" : $"채집속도\n{Cost(200, GameDataManager.Instance.castingLevel)}";
         attackDelayCosttext.text = GameDataManager.Instance.atkDelayLevel >= 30 ? $"캐스팅주기\nMax" : $"캐스팅주기\n{Cost(100, GameDataManager.Instance.atkDelayLevel)}";
         goldCostText.text = GameDataManager.Instance.goldLevel >= 15 ? $"골드획득량\nMax" : $"골드획득량\n{Cost(1000, GameDataManager.Instance.goldLevel)}";
         specialCosttext.text = GameDataManager.Instance.spacialLevel >= 30 ? $"스페셜등급\nMax" : $"스페셜등급\n{Cost(500, GameDataManager.Instance.spacialLevel)}";
@@ -104,6 +106,8 @@ public class MainCanvasManager : MonoBehaviour
                     cost = Cost(200, GameDataManager.Instance.castingLevel);
                     if (cost <= GameDataManager.Instance.gold)
                     {
+                        GameManager.instance.effectAudioSource.clip = GameDataManager.Instance.resoureceManager.uiClips[2];
+                        GameManager.instance.effectAudioSource.Play();
                         GameDataManager.Instance.gold -= cost;
                         GameDataManager.Instance.castingLevel += 1;
                     }
@@ -115,6 +119,8 @@ public class MainCanvasManager : MonoBehaviour
                     cost = Cost(1000, GameDataManager.Instance.goldLevel);
                     if (cost <= GameDataManager.Instance.gold)
                     {
+                        GameManager.instance.effectAudioSource.clip = GameDataManager.Instance.resoureceManager.uiClips[2];
+                        GameManager.instance.effectAudioSource.Play();
                         GameDataManager.Instance.gold -= cost;
                         GameDataManager.Instance.goldLevel += 1;
                     }
@@ -126,6 +132,8 @@ public class MainCanvasManager : MonoBehaviour
                     cost = Cost(500, GameDataManager.Instance.spacialLevel);
                     if (cost <= GameDataManager.Instance.gold)
                     {
+                        GameManager.instance.effectAudioSource.clip = GameDataManager.Instance.resoureceManager.uiClips[2];
+                        GameManager.instance.effectAudioSource.Play();
                         GameDataManager.Instance.gold -= cost;
                         GameDataManager.Instance.spacialLevel += 1;
                     }
@@ -137,6 +145,8 @@ public class MainCanvasManager : MonoBehaviour
                     cost = Cost(100, GameDataManager.Instance.atkDelayLevel);
                     if (cost <= GameDataManager.Instance.gold)
                     {
+                        GameManager.instance.effectAudioSource.clip = GameDataManager.Instance.resoureceManager.uiClips[2];
+                        GameManager.instance.effectAudioSource.Play();
                         GameDataManager.Instance.gold -= cost;
                         GameDataManager.Instance.atkDelayLevel += 1;
                     }
@@ -153,9 +163,9 @@ public class MainCanvasManager : MonoBehaviour
     {
         if (isChangePlace)
             return;
+        fadeImage.gameObject.SetActive(true);
         isChangePlace = true;
         StartCoroutine(PlaceChageCo(placeNum));
-        //사운드도 변경해준다
     }
 
     [SerializeField] Image fadeImage;
@@ -163,8 +173,6 @@ public class MainCanvasManager : MonoBehaviour
     {
         WaitForSeconds delay = new WaitForSeconds(1f);
         WaitForSeconds fadedelay = new WaitForSeconds(0.05f);
-        fadeImage.gameObject.SetActive(true);
-
 
         var charControll = CharecterManager.instance.charecterController;
         charControll.isMove = true;
@@ -191,9 +199,12 @@ public class MainCanvasManager : MonoBehaviour
         }
         StartCoroutine(charControll.MoveTargetPos());
         yield return delay;
+        yield return delay;
+        yield return delay;
         fadeImage.gameObject.SetActive(false);
         isChangePlace = false;
     }
+    public List<GameObject> guidArray;
     //도감세팅
     public void SetFishGuide()
     {
@@ -203,12 +214,18 @@ public class MainCanvasManager : MonoBehaviour
             for (int j = 0; j < GameDataManager.Instance.fishdata[keys[i]].Count; j++)
             {
                 var guideBox = Instantiate(this.guideBox, Guide).GetComponent<GuideBoxInfo>();
+                guidArray.Add(guideBox.gameObject);
+                guideBox.name = GameDataManager.Instance.fishdata[keys[i]][j].id;
                 guideBox.fishData = GameDataManager.Instance.fishdata[keys[i]][j];
                 guideBox.guideimage.sprite = GameDataManager.Instance.resoureceManager.fishSprites.FirstOrDefault(x => x.name.Equals(GameDataManager.Instance.fishdata[keys[i]][j].id));
             }
         }
     }
-
+    public void NewFish(string id)
+    {
+        var newFish = Managers.Resource.Instantiate("PopupUI/NewFish", transform, 1);
+        newFish.GetComponent<NewFishPopup>().ImageChange(id);
+    }
     //popup생성
     public void PopUPSpawn(string text)
     {

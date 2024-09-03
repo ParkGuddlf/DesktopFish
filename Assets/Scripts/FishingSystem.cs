@@ -119,10 +119,13 @@ public class FishingSystem : MonoBehaviour
         currentFishHp = currentFishData.hp;
     }
 
-    public void CatchFish()
+    public void CatchFish(bool fever)
     {
-        audioSource.clip = GameDataManager.Instance.resoureceManager.fishClips[currentFishData.size];
-        audioSource.Play();
+        if (!fever)
+        {
+            audioSource.clip = GameDataManager.Instance.resoureceManager.fishClips[currentFishData.size];
+            audioSource.Play();
+        }
         Managers.Resource.Instantiate("Fish/Fish",transform,1);
     }
     //무작위 데이터

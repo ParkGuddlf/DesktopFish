@@ -67,8 +67,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: +10gold
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 5e42a42c36f69b343ba9b6f67e6e3407, type: 2}
-  m_sharedMaterial: {fileID: 5887652749786709240, guid: 5e42a42c36f69b343ba9b6f67e6e3407,
+  m_fontAsset: {fileID: 11400000, guid: e2b971119ba01a747976e0786c339776, type: 2}
+  m_sharedMaterial: {fileID: 5887652749786709240, guid: e2b971119ba01a747976e0786c339776,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -109,7 +109,7 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
+  m_enableWordWrapping: 0
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
@@ -148,6 +148,7 @@ GameObject:
   - component: {fileID: 3320909935553533595}
   - component: {fileID: 1911128582622102093}
   - component: {fileID: 6930883199554911260}
+  - component: {fileID: 8057957432707227558}
   m_Layer: 5
   m_Name: PopupTextCanvas
   m_TagString: Untagged
@@ -220,7 +221,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &1911128582622102093
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -251,3 +252,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _text: {fileID: 4634870644689735662}
+--- !u!114 &8057957432707227558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5486874385564266019}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc5653386ec6d2e4ca09bc9b1231da96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsUsing: 0

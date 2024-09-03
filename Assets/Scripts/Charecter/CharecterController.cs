@@ -40,7 +40,7 @@ public class CharecterController : MonoBehaviour
 
     public IEnumerator MoveTargetPos()
     {
-        transform.rotation = new Quaternion(0, 0, 0,0);
+        transform.rotation = new Quaternion(0, 0, 0, 0);
         charecterManager.charecterState = CharecterState.Walk;
         while (Vector3.Distance(FishingPoint.position, transform.position) > 0.1f)
         {
@@ -58,9 +58,11 @@ public class CharecterController : MonoBehaviour
     public IEnumerator PlaceChangeCo()
     {
         WaitForSeconds delay = new WaitForSeconds(1f);
-        bobber.gameObject.SetActive(false);
+
         charecterManager.charecterState = CharecterState.StandUp;
+        bobber.gameObject.SetActive(false);
         yield return delay;
+
         transform.rotation = new Quaternion(0, 180, 0, 0);
         charecterManager.charecterState = CharecterState.Walk;
         while (Vector3.Distance(CharecterSpowPoint.position, transform.position) > 0.1f)
@@ -93,7 +95,7 @@ public class CharecterController : MonoBehaviour
                     if (!isThrow)
                     {
                         timer = 0.0f;
-                        charecterManager.charecterState = CharecterState.Throw;                        
+                        charecterManager.charecterState = CharecterState.Throw;
                         isThrow = true;
                     }
                     if (timer > charecterManager.throwDelay)
@@ -114,10 +116,10 @@ public class CharecterController : MonoBehaviour
                     {
                         timer = 0.0f;
 
-                        FishingSystem.instance.currentFishHp -= 1;
+                        FishingSystem.instance.currentFishHp -= charecterManager.damage;
                         if (FishingSystem.instance.currentFishHp <= 0)
                         {
-                            FishingSystem.instance.CatchFish();
+                            FishingSystem.instance.CatchFish(charecterManager.isFever);
                             isThrow = false;
                             isCatch = false;
                             StartCoroutine(BobberPosition(false));

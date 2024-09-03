@@ -55,15 +55,24 @@ public class ItemBoxInfo : UIInfoData
                 GameDataManager.Instance.rod[equipInfo.id] = true;
 
                 isBuy = true;
+
+                GameManager.instance.effectAudioSource.clip = GameDataManager.Instance.resoureceManager.uiClips[1];
+                GameManager.instance.effectAudioSource.Play();
             }
             else
                 return;
+        }
+        else
+        {
+            GameManager.instance.effectAudioSource.clip = GameDataManager.Instance.resoureceManager.uiClips[0];
+            GameManager.instance.effectAudioSource.Play();
         }
 
 
         switch (itemKind)
         {
             case "Rod":
+                CharecterManager.instance.damage = equipInfo.attack;
                 FishingSystem.instance.percentage = equipInfo.probabilitytable;
                 GameDataManager.Instance.currentRod = equipInfo.id;
                 break;

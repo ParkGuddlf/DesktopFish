@@ -67,6 +67,11 @@ public class GameManager : BaseScene
         CharecterManager.instance.attackDelay = 4.1f - GameDataManager.Instance.atkDelayLevel * 0.1f;
     }
 
+    public void Quit()
+    {
+        Application.Quit();
+    }
+
     public void SaveQuit()
     {
         StartCoroutine(SaveGamemanager());
