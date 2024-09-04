@@ -136,22 +136,31 @@ public class TransparentWindow : MonoBehaviour
             SetClickThrough();
         }
     }
+    [SerializeField]
+    TMPro.TMP_Text asd;
 
+    int currentdisplayNum = 0;
     public void MoveWindowToNextDisplay(int value)
-    {                
-        // 각 디스플레이의 해상도 및 위치를 가져옴
-        int newX = 0;
+    {
+        if (value < 0 || value >= Display.displays.Length)
+        {
+            Debug.LogError("Invalid display index.");
+            return;
+        }
 
-        // 선택된 디스플레이의 절대 좌표를 가져옴
+        int currentX = Display.displays[currentdisplayNum].systemWidth;
+        int newX = Display.displays[value].systemWidth;
+        int minas = currentX - newX < 0 ? -1 : 1;
+        asd.text = $"{minas}";
+        newX = 0;
         for (int i = 0; i < value; i++)
         {
-            newX += Display.displays[i].systemWidth;
+            newX += Display.displays[i].renderingWidth * minas;
         }
 
         screenResolution = new Vector2Int(Display.displays[value].systemWidth, Display.displays[value].systemHeight);
         Screen.SetResolution(screenResolution.x, screenResolution.y, fullscreen ? FullScreenMode.FullScreenWindow : FullScreenMode.Windowed);
-
-
+        currentdisplayNum = value;
 #if !UNITY_EDITOR
 		fWidth = screenResolution.x;
 		int titleBarHeight = GetSystemMetrics(SM_CYCAPTION);

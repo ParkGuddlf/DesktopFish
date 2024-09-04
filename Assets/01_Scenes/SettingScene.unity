@@ -223,6 +223,7 @@ MonoBehaviour:
   customResolution: 0
   screenResolution: {x: 960, y: 540}
   targetFrameRate: 60
+  asd: {fileID: 0}
 --- !u!81 &810551830
 AudioListener:
   m_ObjectHideFlags: 0

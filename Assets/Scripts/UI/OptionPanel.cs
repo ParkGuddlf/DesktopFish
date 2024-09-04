@@ -21,7 +21,7 @@ public class OptionPanel : MonoBehaviour
             optionList.Add(new TMP_Dropdown.OptionData($"È­¸é {i}"));
         }
         dropdown.AddOptions(optionList);
-        ChangedDisPlay();
+        Camera.main.GetComponent<TransparentWindow>().MoveWindowToNextDisplay(0);
         UIRest();
 
     }
