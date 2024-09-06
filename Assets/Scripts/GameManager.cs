@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using static UnityEngine.Rendering.DebugUI;
 
 public class GameManager : BaseScene
 {
@@ -56,6 +57,8 @@ public class GameManager : BaseScene
         SaveIsEasyAPI.LoadAll(selected);
         StartCoroutine(SpanwSetDataCo());
         StartCoroutine(MainCanvasManager.Instance.SetStoreInfo());
+        //데이터매니저에서 전정된값들 불러와서 지정해주기
+        GameDataManager.Instance.runTimeSecond = (int)SaveIsEasyAPI.ListOfValidSaves()[0].StatisticsTotalTimeInSecondsAsTimeSpan.TotalSeconds;
     }
     //캐릭터생성 및 데이터 초기화
     IEnumerator SpanwSetDataCo()

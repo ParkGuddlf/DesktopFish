@@ -31,11 +31,14 @@ public class FishingSystem : MonoBehaviour
     {
         audioSource = GetComponent<AudioSource>();
     }
-
+    private void Update()
+    {
+        audioSource.volume = GameManager.instance.effectSound;
+    }
     public void SetRodStatePercentage(string rodid)
     {
         percentage = GameDataManager.Instance.equipdata["Rod"].Find(x => rodid == x.id).probabilitytable;
-        percentage[4] = $"{GameDataManager.Instance.spacialLevel}";
+        percentage[4] = $"{GameDataManager.Instance.spacialLevel*10}";
         CharecterManager.instance.damage = GameDataManager.Instance.equipdata["Rod"].Find(x => rodid == x.id).attack;
     }
 

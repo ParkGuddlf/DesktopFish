@@ -108,7 +108,7 @@ public class MainCanvasManager : MonoBehaviour
                     {
                         GameManager.instance.effectAudioSource.clip = GameDataManager.Instance.resoureceManager.uiClips[2];
                         GameManager.instance.effectAudioSource.Play();
-                        GameDataManager.Instance.gold -= cost;
+                        GameDataManager.Instance.gold = -cost;
                         GameDataManager.Instance.castingLevel += 1;
                     }
                 }
@@ -121,7 +121,7 @@ public class MainCanvasManager : MonoBehaviour
                     {
                         GameManager.instance.effectAudioSource.clip = GameDataManager.Instance.resoureceManager.uiClips[2];
                         GameManager.instance.effectAudioSource.Play();
-                        GameDataManager.Instance.gold -= cost;
+                        GameDataManager.Instance.gold = -cost;
                         GameDataManager.Instance.goldLevel += 1;
                     }
                 }
@@ -134,7 +134,7 @@ public class MainCanvasManager : MonoBehaviour
                     {
                         GameManager.instance.effectAudioSource.clip = GameDataManager.Instance.resoureceManager.uiClips[2];
                         GameManager.instance.effectAudioSource.Play();
-                        GameDataManager.Instance.gold -= cost;
+                        GameDataManager.Instance.gold = -cost;
                         GameDataManager.Instance.spacialLevel += 1;
                     }
                 }
@@ -147,7 +147,7 @@ public class MainCanvasManager : MonoBehaviour
                     {
                         GameManager.instance.effectAudioSource.clip = GameDataManager.Instance.resoureceManager.uiClips[2];
                         GameManager.instance.effectAudioSource.Play();
-                        GameDataManager.Instance.gold -= cost;
+                        GameDataManager.Instance.gold = -cost;
                         GameDataManager.Instance.atkDelayLevel += 1;
                     }
                 }

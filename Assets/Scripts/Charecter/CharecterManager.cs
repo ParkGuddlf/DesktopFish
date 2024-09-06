@@ -62,6 +62,24 @@ public class CharecterManager : MonoBehaviour
 
     private void Start()
     {
+        CharecterSpreit();
+    }
+
+    private void Update()
+    {
+        if (!isFever)
+        {
+            audioSource.volume = GameManager.instance.effectSound;
+            bobberSource.volume = GameManager.instance.effectSound * 0.5f;
+        }
+        else
+        {
+            audioSource.volume =0;
+            bobberSource.volume = 0;
+        }
+    }
+    public void CharecterSpreit()
+    {
         switch (GameDataManager.Instance.lastCharecter)
         {
             case Charecter.Bule:
@@ -78,21 +96,6 @@ public class CharecterManager : MonoBehaviour
                 break;
         }
     }
-
-    private void Update()
-    {
-        if (!isFever)
-        {
-            audioSource.volume = GameManager.instance.effectSound;
-            bobberSource.volume = GameManager.instance.effectSound * 0.5f;
-        }
-        else
-        {
-            audioSource.volume =0;
-            bobberSource.volume = 0;
-        }
-    }
-
     void Fever()
     {
         Managers.Resource.Instantiate("Fever");

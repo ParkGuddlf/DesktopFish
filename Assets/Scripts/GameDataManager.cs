@@ -29,8 +29,17 @@ public class GameDataManager : MonoBehaviour
     public float weatherTimer;
     public float dayTimer;
     public float spownTimer;
-
-    public float gold;
+    [SerializeField]
+    private float Gold;
+    public float gold
+    {
+        get { return Gold; }
+        set
+        {
+            Gold += value;
+            earnedGold += value;
+        }
+    }
     public string currentRod = "a001";
     [SerializeField]
     private int CastingLevel = 1;
@@ -68,6 +77,12 @@ public class GameDataManager : MonoBehaviour
         }
     }
 
+    public float fishCatchCount;
+    public float earnedGold;
+    public float CatchObjectCount;
+    public float stealFishCount;
+    public float runTimeSecond;
+
 
     //여기에 저장 될때 마다 팝업창 띄우기 뭐를 잡았습니다
     public List<string> saveGuideFish = new List<string>();
@@ -76,10 +91,13 @@ public class GameDataManager : MonoBehaviour
     public Dictionary<string, bool> rod = new Dictionary<string, bool>();
 
     //구글시트
-    //물고기 데이터
+    //에디터용 물고기 데이터
     readonly string FISHADDRESS = "https://docs.google.com/spreadsheets/d/1I3j43QsjWIu1Hro2TAboQeWrvgd2TKXtsPQw8LNWdKg/export?format=tsv&range=A2:J";
-    //장비 데이터
+    //에디터용 장비 데이터
     readonly string EQUIPADDRESS = "https://docs.google.com/spreadsheets/d/1I3j43QsjWIu1Hro2TAboQeWrvgd2TKXtsPQw8LNWdKg/export?format=tsv&range=A2:G&gid=428092868";
+
+    readonly string BuildFISHADDRESS = "https://docs.google.com/spreadsheets/d/1I3j43QsjWIu1Hro2TAboQeWrvgd2TKXtsPQw8LNWdKg/export?format=tsv&range=A2:J&gid=823048447";
+    readonly string BuildEQUIPADDRESS = "https://docs.google.com/spreadsheets/d/1I3j43QsjWIu1Hro2TAboQeWrvgd2TKXtsPQw8LNWdKg/export?format=tsv&range=A2:G&gid=579945735";
 
     string sheetData;
 
@@ -142,12 +160,23 @@ public class GameDataManager : MonoBehaviour
         rod["a001"] = true;
         FishingSystem.instance.SetRodStatePercentage(currentRod);
         CharecterManager.instance.castingSpeed = 10 - castingLevel * 0.5f;
+        //총시간 잡은 마리수 이런것도 리셋해주기
+        fishCatchCount = 0;
+        earnedGold = 0;
+        CatchObjectCount = 0;
+        stealFishCount = 0;
     }
 
     #region 시트 데이터 불러오기
     IEnumerator FishDataLoadGoogleSheet()
     {
-        using (UnityWebRequest www = UnityWebRequest.Get(FISHADDRESS))
+        string _FISHADDRESS;
+#if UNITY_EDITOR
+        _FISHADDRESS = FISHADDRESS;
+#elif !UNITY_EDITOR
+        _FISHADDRESS = BuildFISHADDRESS;
+#endif
+        using (UnityWebRequest www = UnityWebRequest.Get(_FISHADDRESS))
         {
             yield return www.SendWebRequest();
 
@@ -160,7 +189,13 @@ public class GameDataManager : MonoBehaviour
 
     IEnumerator EquipDataLoadGoogleSheet()
     {
-        using (UnityWebRequest www = UnityWebRequest.Get(EQUIPADDRESS))
+        string _EQUIPADDRESS;
+#if UNITY_EDITOR
+        _EQUIPADDRESS = EQUIPADDRESS;
+#elif !UNITY_EDITOR
+        _EQUIPADDRESS = BuildEQUIPADDRESS;
+#endif
+        using (UnityWebRequest www = UnityWebRequest.Get(_EQUIPADDRESS))
         {
             yield return www.SendWebRequest();
 

@@ -9,7 +9,6 @@ public class OptionPanel : MonoBehaviour
     public Slider bgmSoundSlider;
     public Slider effectSoundSlider;
     public Toggle MostTopToggle;
-    public Toggle DobbleToggle;
 
     public TMP_Dropdown dropdown;
 
@@ -31,7 +30,6 @@ public class OptionPanel : MonoBehaviour
         bgmSoundSlider.value = GameManager.instance.bgmSound;
         effectSoundSlider.value = GameManager.instance.effectSound;
         MostTopToggle.isOn = GameManager.instance.isMostTop;
-        DobbleToggle.isOn = GameManager.instance.dubbleMode;
     }
 
     public void SoundSliderMetherd(string soundname)
@@ -46,12 +44,14 @@ public class OptionPanel : MonoBehaviour
     {
         GameManager.instance.isMostTop = MostTopToggle.isOn;
     }
-    public void DobbleMode()
-    {
-        GameManager.instance.dubbleMode = DobbleToggle.isOn;
-    }
     public void ChangedDisPlay()
     {
         Camera.main.GetComponent<TransparentWindow>().MoveWindowToNextDisplay(dropdown.value);
     }
+
+    public void ChangeCharecter()
+    {
+        Managers.Resource.Instantiate("PopupUI/CharectersChange", MainCanvasManager.Instance.transform, 1);
+    }
+
 }

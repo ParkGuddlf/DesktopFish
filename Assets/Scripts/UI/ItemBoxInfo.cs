@@ -50,7 +50,7 @@ public class ItemBoxInfo : UIInfoData
         {
             if (price <= GameDataManager.Instance.gold)
             {
-                GameDataManager.Instance.gold -= price;
+                GameDataManager.Instance.gold = -price;
 
                 GameDataManager.Instance.rod[equipInfo.id] = true;
 

@@ -136,8 +136,6 @@ public class TransparentWindow : MonoBehaviour
             SetClickThrough();
         }
     }
-    [SerializeField]
-    TMPro.TMP_Text asd;
 
     int currentdisplayNum = 0;
     public void MoveWindowToNextDisplay(int value)
@@ -151,7 +149,7 @@ public class TransparentWindow : MonoBehaviour
         int currentX = Display.displays[currentdisplayNum].systemWidth;
         int newX = Display.displays[value].systemWidth;
         int minas = currentX - newX < 0 ? -1 : 1;
-        asd.text = $"{minas}";
+
         newX = 0;
         for (int i = 0; i < value; i++)
         {

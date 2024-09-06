@@ -33,7 +33,8 @@ public class SeaObject : MonoBehaviour
     void DestroyObject()
     {
         float gold = Random.Range(50, 150);
-        GameDataManager.Instance.gold += gold;
+        GameDataManager.Instance.gold = gold;
+        GameDataManager.Instance.CatchObjectCount++;
         var text = Managers.Resource.Instantiate("PopupTextCanvas");
         text.GetComponent<TextPopup>().textChange($"<color=yellow>+{gold} gold<color=yellow>");
         text.transform.position = transform.position;
