@@ -1,9 +1,7 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using static Define;
 
 public class NewFishPopup : MonoBehaviour
 {
@@ -12,6 +10,9 @@ public class NewFishPopup : MonoBehaviour
 
     Vector2 startPos = new Vector2(-250,35);
     Vector2 endPos= new Vector2(0,35);
+
+    [SerializeField] TMP_Text rareText;
+    [SerializeField] TMP_Text nameText;
 
     void Awake()
     {
@@ -38,10 +39,36 @@ public class NewFishPopup : MonoBehaviour
         Managers.Resource.Destroy(gameObject);
     }
 
-    public void ImageChange(string id)
+    public void InfoChange(FishData fishData)
     {
-        int index = id.IndexOf('_');
-        fishImage.sprite = GameDataManager.Instance.resoureceManager.fishSprites[int.Parse(id.Substring(index + 1))];
+        int index = fishData.id.IndexOf('_');
+        fishImage.sprite = GameDataManager.Instance.resoureceManager.fishSprites[int.Parse(fishData.id.Substring(index + 1))];
+        rareText.text = RareText(fishData);
+        nameText.text = fishData.name;
+    }
+
+    string RareText(FishData fishData)
+    {
+        if (fishData != null)
+        {
+            switch (fishData.rare)
+            {
+                case "Common":
+                    return "Common";
+                case "Nomal":
+                    return "<color=green>Nomal<color=green>";
+                case "Rare":
+                    return "<color=blue>Rare<color=blue>";
+                case "Epic":
+                    return "<color=purple>Epic<color=purple>";
+                case "Spacial":
+                    return "<color=orange>Spacial<color=orange>";
+                default:
+                    return "";
+            }
+        }
+        else
+            return "";
     }
 
 }

@@ -73,7 +73,7 @@ public class ItemBoxInfo : UIInfoData
         {
             case "Rod":
                 CharecterManager.instance.damage = equipInfo.attack;
-                FishingSystem.instance.percentage = equipInfo.probabilitytable;
+                FishingSystem.instance.SetRodStatePercentage(equipInfo.id);
                 GameDataManager.Instance.currentRod = equipInfo.id;
                 break;
             case "Bobber":

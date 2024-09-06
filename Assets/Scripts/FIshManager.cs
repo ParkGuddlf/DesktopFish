@@ -46,9 +46,10 @@ public class FIshManager : MonoBehaviour
 
             if (!GameDataManager.Instance.saveGuideFish.Contains(fishData.id))
             {
-                GameDataManager.Instance.AddGuide(fishData);
+                //GameDataManager.Instance.AddGuide(fishData);
+                GameDataManager.Instance.saveGuideFish.Add(fishData.id);
                 MainCanvasManager.Instance.guidArray.FirstOrDefault(x => x.name == fishData.id).GetComponent<GuideBoxInfo>().newFishMark.SetActive(true);
-                MainCanvasManager.Instance.NewFish(fishData.id);
+                MainCanvasManager.Instance.NewFish(fishData);
                 MainCanvasManager.Instance.newFishMark.SetActive(true);
             }
         }

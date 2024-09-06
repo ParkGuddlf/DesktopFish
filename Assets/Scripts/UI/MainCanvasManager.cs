@@ -36,6 +36,10 @@ public class MainCanvasManager : MonoBehaviour
     public GameObject newFishMark;
 
     public InfoBox infoBox;
+
+    bool isMove = false;
+    bool isOpen = false;
+
     private void Awake()
     {
         Instance = this;
@@ -52,6 +56,8 @@ public class MainCanvasManager : MonoBehaviour
         attackDelayCosttext.text = GameDataManager.Instance.atkDelayLevel >= 30 ? $"Ä³½ºÆÃÁÖ±â\nMax" : $"Ä³½ºÆÃÁÖ±â\n{Cost(100, GameDataManager.Instance.atkDelayLevel)}";
         goldCostText.text = GameDataManager.Instance.goldLevel >= 15 ? $"°ñµåÈ¹µæ·®\nMax" : $"°ñµåÈ¹µæ·®\n{Cost(1000, GameDataManager.Instance.goldLevel)}";
         specialCosttext.text = GameDataManager.Instance.spacialLevel >= 30 ? $"½ºÆä¼Èµî±Þ\nMax" : $"½ºÆä¼Èµî±Þ\n{Cost(500, GameDataManager.Instance.spacialLevel)}";
+    
+    
     }
 
     public void PanelOnOff(int num)
@@ -61,23 +67,36 @@ public class MainCanvasManager : MonoBehaviour
             go.SetActive(false);
         }
         panels[num].SetActive(true);
+        if(num ==1)
+            newFishMark.SetActive(false);
     }
 
-    public void OpenUI()
+    public void OpenUI(bool ison)
     {
+        if (isMove || isOpen || ison)
+            return;
+
         StartCoroutine(MoveTargetPos(targetPosition));
+        isOpen = true;
     }
-    public void CloseUI()
+    public void CloseUI(bool ison)
     {
+        if (isMove || !isOpen || ison)
+            return;
+
         StartCoroutine(MoveTargetPos(startPosition));
+        isOpen = false;
     }
     IEnumerator MoveTargetPos(RectTransform moveTR)
     {
+        isMove = true;
         while (Vector3.Distance(moveTR.anchoredPosition, mainPanel.anchoredPosition) > 0.1f)
         {
             yield return Time.deltaTime;
             mainPanel.anchoredPosition = Vector3.Lerp(mainPanel.anchoredPosition, moveTR.anchoredPosition, 0.5f);
         }
+        isMove = false;
+        
     }
 
     public IEnumerator SetStoreInfo()
@@ -89,6 +108,10 @@ public class MainCanvasManager : MonoBehaviour
         foreach (EquipData go in GameDataManager.Instance.equipdata["Rod"])
         {
             Sprite sprite = GameDataManager.Instance.resoureceManager.iconSprites.FirstOrDefault(x => x.name.Equals(go.id));
+            if (!GameDataManager.Instance.rod.Keys.Contains(go.id))
+            {
+                GameDataManager.Instance.rod.Add(go.id, false);
+            }
             Instantiate(itemBox, RodBox).GetComponent<ItemBoxInfo>().SetInfo(go, GameDataManager.Instance.rod[go.id], "Rod", sprite);
             count++;
         }
@@ -136,6 +159,7 @@ public class MainCanvasManager : MonoBehaviour
                         GameManager.instance.effectAudioSource.Play();
                         GameDataManager.Instance.gold = -cost;
                         GameDataManager.Instance.spacialLevel += 1;
+                        FishingSystem.instance.percentage[4] = $"{GameDataManager.Instance.spacialLevel * 10}";
                     }
                 }
                 break;
@@ -169,6 +193,7 @@ public class MainCanvasManager : MonoBehaviour
     }
 
     [SerializeField] Image fadeImage;
+    [SerializeField] Toggle closeToggle;
     IEnumerator PlaceChageCo(int placeNum)
     {
         WaitForSeconds delay = new WaitForSeconds(1f);
@@ -176,7 +201,8 @@ public class MainCanvasManager : MonoBehaviour
 
         var charControll = CharecterManager.instance.charecterController;
         charControll.isMove = true;
-        CloseUI();
+        closeToggle.isOn = true;
+        //CloseUI(true);
         yield return delay;
         StartCoroutine(charControll.PlaceChangeCo());
         yield return delay;
@@ -221,10 +247,10 @@ public class MainCanvasManager : MonoBehaviour
             }
         }
     }
-    public void NewFish(string id)
+    public void NewFish(FishData fishdata)
     {
         var newFish = Managers.Resource.Instantiate("PopupUI/NewFish", transform, 1);
-        newFish.GetComponent<NewFishPopup>().ImageChange(id);
+        newFish.GetComponent<NewFishPopup>().InfoChange(fishdata);
     }
     //popup»ý¼º
     public void PopUPSpawn(string text)
