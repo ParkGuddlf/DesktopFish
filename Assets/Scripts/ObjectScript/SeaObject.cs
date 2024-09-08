@@ -24,12 +24,28 @@ public class SeaObject : MonoBehaviour
         float randomX = Random.Range(screenBoundsBottomLeft.x, screenBoundsTopRight.x);
         transform.position = new Vector3(randomX, 0,0);
     }
-    private void OnMouseUp()
+
+    private void Update()
     {
-        audioSource.volume = GameManager.instance.effectSound;
-        audioSource.Play();
-        Invoke("DestroyObject", 0.01f);
+        if (Input.GetMouseButtonUp(0)) // 마우스 왼쪽 버튼 클릭
+        {
+            // 카메라에서 마우스 위치를 화면 좌표에서 월드 좌표로 변환
+            Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            // 해당 위치로 Raycast 발사
+            RaycastHit2D hit = Physics2D.Raycast(mousePosition, Vector2.zero);
+
+            if (hit.collider == null)
+                return;
+            // 클릭된 오브젝트가 있는지 확인
+            if (hit.collider.gameObject.Equals(gameObject))
+            {
+                audioSource.volume = GameManager.instance.effectSound;
+                audioSource.Play();
+                Invoke("DestroyObject", 0.1f);
+            }
+        }
     }
+
     void DestroyObject()
     {        
         float gold = Random.Range(50, 150);
