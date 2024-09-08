@@ -31,7 +31,7 @@ public class FIshManager : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.name == "Ground")
+        if (collision.collider.CompareTag("Ground"))
         {
             Managers.Resource.Destroy(gameObject);
             var gold = Gold();

@@ -38,7 +38,7 @@ public class FishingSystem : MonoBehaviour
     public void SetRodStatePercentage(string rodid)
     {
         percentage = GameDataManager.Instance.equipdata["Rod"].Find(x => rodid == x.id).probabilitytable;
-        percentage[4] = $"{GameDataManager.Instance.spacialLevel*10}";
+        percentage[4] = $"{GameDataManager.Instance.spacialLevel * 10}";
         CharecterManager.instance.damage = GameDataManager.Instance.equipdata["Rod"].Find(x => rodid == x.id).attack;
     }
 
@@ -110,16 +110,31 @@ public class FishingSystem : MonoBehaviour
                 currentFishData = possibleRare[UnityEngine.Random.Range(0, possibleRare.Count)];
                 break;
             case "Epic":
-                currentFishData = possibleEpic[UnityEngine.Random.Range(0, possibleEpic.Count)];
+                if (possibleEpic.Count <= 0)
+                {
+                    FishData();
+                    return;
+                }
+                else
+                {
+                    currentFishData = possibleEpic[UnityEngine.Random.Range(0, possibleEpic.Count)];
+                }
                 break;
             case "Spacial":
-                currentFishData = possibleSpacial[UnityEngine.Random.Range(0, possibleSpacial.Count)];
+                if (possibleSpacial.Count <= 0)
+                {
+                    FishData();
+                    return;
+                }
+                else
+                {
+                    currentFishData = possibleSpacial[UnityEngine.Random.Range(0, possibleSpacial.Count)];
+                }
                 break;
             default:
                 currentFishData = possibleCommon[UnityEngine.Random.Range(0, possibleCommon.Count)];
                 break;
         }
-        currentFishHp = currentFishData.hp;
     }
 
     public void CatchFish(bool fever)
@@ -129,7 +144,7 @@ public class FishingSystem : MonoBehaviour
             audioSource.clip = GameDataManager.Instance.resoureceManager.fishClips[currentFishData.size];
             audioSource.Play();
         }
-        Managers.Resource.Instantiate("Fish/Fish",transform,1);
+        Managers.Resource.Instantiate("Fish/Fish", transform, 1);
     }
     //무작위 데이터
     int DrawElement(List<string> elements)

@@ -20,6 +20,4 @@ public class ResoureceManager : MonoBehaviour
     public Sprite[] iconSprites; 
     [Header("아이템이미지")]
     public Sprite[] seaObject;
-    [Header("캐릭터 변경 이미지")]
-    public Sprite[] charUISprites;
 }

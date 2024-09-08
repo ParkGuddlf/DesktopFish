@@ -7,7 +7,6 @@ public class UiSound : MonoBehaviour, IPointerClickHandler
 {
     public void OnPointerClick(PointerEventData eventData)
     {
-        GameManager.instance.effectAudioSource.clip = GameDataManager.Instance.resoureceManager.uiClips[0];
-        GameManager.instance.effectAudioSource.Play();
+        GameManager.instance.EffectSound(0);
     }
 }

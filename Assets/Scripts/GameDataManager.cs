@@ -58,14 +58,15 @@ public class GameDataManager : MonoBehaviour
             CharecterManager.instance.castingSpeed = 10.5f - castingLevel * 0.5f;
         }
     }
-    public int goldLevel { get { return GoldLevel; } set { GoldLevel = value < 16 ? value : 15; } }
+    public int goldLevel
+    {
+        get { return GoldLevel; }
+        set { GoldLevel = value < 16 ? value : 15; }
+    }
     public int spacialLevel
     {
         get { return SpacialLevel; }
-        set
-        {
-            SpacialLevel = value < 31 ? value : 30;
-        }
+        set { SpacialLevel = value < 31 ? value : 30; }
     }
     public int atkDelayLevel
     {
@@ -80,7 +81,6 @@ public class GameDataManager : MonoBehaviour
     public float fishCatchCount;
     public float earnedGold;
     public float CatchObjectCount;
-    public float stealFishCount;
     public float runTimeSecond;
 
 
@@ -119,20 +119,6 @@ public class GameDataManager : MonoBehaviour
     //캐릭터 스폰
     public void SpawnCharecter()
     {
-        switch (lastCharecter)
-        {
-            case Charecter.Bule:
-                Debug.Log("Blue");
-                break;
-            case Charecter.Black:
-                Debug.Log("Black");
-                break;
-            case Charecter.Pink:
-                Debug.Log("Pink");
-                break;
-            default:
-                break;
-        }
         var charecter = Resources.Load<GameObject>("Prefabs/Charecter/Charecter");
         Transform parent = GameObject.Find("MapObjects").transform;
         Instantiate(charecter, parent);
@@ -159,12 +145,12 @@ public class GameDataManager : MonoBehaviour
 
         rod["a001"] = true;
         FishingSystem.instance.SetRodStatePercentage(currentRod);
-        CharecterManager.instance.castingSpeed = 10 - castingLevel * 0.5f;
+        FishingSystem.instance.SetFishCatchPossible();
+        CharecterManager.instance.castingSpeed = 10.5f - castingLevel * 0.5f;
         //총시간 잡은 마리수 이런것도 리셋해주기
         fishCatchCount = 0;
         earnedGold = 0;
         CatchObjectCount = 0;
-        stealFishCount = 0;
     }
 
     #region 시트 데이터 불러오기
@@ -204,7 +190,8 @@ public class GameDataManager : MonoBehaviour
         }
         EquipData();
     }
-
+    [HideInInspector]
+    public int totalFish =1;
     public Dictionary<string, List<FishData>> fishdata = new Dictionary<string, List<FishData>>
     {
         { "Common",new List<FishData>() },
@@ -218,6 +205,7 @@ public class GameDataManager : MonoBehaviour
     {
         string[] rows = sheetData.Split('\n');
 
+        totalFish= rows.Length;
 
         foreach (string row in rows)
         {
@@ -225,7 +213,7 @@ public class GameDataManager : MonoBehaviour
             var data = new FishData() { rare = cols[0], id = cols[1], name = cols[2], hp = float.Parse(cols[3]), place = int.Parse(cols[4]), weather = cols[5], size = int.Parse(cols[6]), time = cols[7].Replace("\r", "") };
             fishdata[cols[0]].Add(data);
         }
-        FishingSystem.instance.SetFishCatchPossible();
+        //FishingSystem.instance.SetFishCatchPossible();
     }
 
     public Dictionary<string, List<EquipData>> equipdata = new Dictionary<string, List<EquipData>>

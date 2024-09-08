@@ -249,46 +249,48 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprites:
-  - {fileID: 1325188890, guid: b847189aa86e6ca478bc5676fa219ed6, type: 3}
-  - {fileID: 907034075, guid: b847189aa86e6ca478bc5676fa219ed6, type: 3}
-  - {fileID: -610676525, guid: b847189aa86e6ca478bc5676fa219ed6, type: 3}
-  - {fileID: -1256236524, guid: b847189aa86e6ca478bc5676fa219ed6, type: 3}
-  - {fileID: -721446230, guid: b847189aa86e6ca478bc5676fa219ed6, type: 3}
-  - {fileID: 1687800203, guid: b847189aa86e6ca478bc5676fa219ed6, type: 3}
-  - {fileID: -65985809, guid: b847189aa86e6ca478bc5676fa219ed6, type: 3}
-  - {fileID: 377528293, guid: b847189aa86e6ca478bc5676fa219ed6, type: 3}
-  - {fileID: 775253381, guid: b847189aa86e6ca478bc5676fa219ed6, type: 3}
-  - {fileID: -1269446871, guid: b847189aa86e6ca478bc5676fa219ed6, type: 3}
-  - {fileID: 1985915324, guid: b847189aa86e6ca478bc5676fa219ed6, type: 3}
-  - {fileID: 1907545296, guid: b847189aa86e6ca478bc5676fa219ed6, type: 3}
-  - {fileID: -1320423528, guid: b847189aa86e6ca478bc5676fa219ed6, type: 3}
-  - {fileID: 304108725, guid: b847189aa86e6ca478bc5676fa219ed6, type: 3}
-  - {fileID: 2143959756, guid: b847189aa86e6ca478bc5676fa219ed6, type: 3}
-  - {fileID: 1712321530, guid: b847189aa86e6ca478bc5676fa219ed6, type: 3}
-  - {fileID: -991540495, guid: b847189aa86e6ca478bc5676fa219ed6, type: 3}
-  - {fileID: -1003560171, guid: b847189aa86e6ca478bc5676fa219ed6, type: 3}
-  - {fileID: -1836710898, guid: b847189aa86e6ca478bc5676fa219ed6, type: 3}
-  - {fileID: 584122006, guid: b847189aa86e6ca478bc5676fa219ed6, type: 3}
-  - {fileID: -1300653788, guid: b847189aa86e6ca478bc5676fa219ed6, type: 3}
-  - {fileID: -163412135, guid: b847189aa86e6ca478bc5676fa219ed6, type: 3}
-  - {fileID: -1690910259, guid: b847189aa86e6ca478bc5676fa219ed6, type: 3}
-  - {fileID: 421075844, guid: b847189aa86e6ca478bc5676fa219ed6, type: 3}
-  - {fileID: -1764697926, guid: b847189aa86e6ca478bc5676fa219ed6, type: 3}
-  - {fileID: 282149256, guid: b847189aa86e6ca478bc5676fa219ed6, type: 3}
-  - {fileID: -748956557, guid: b847189aa86e6ca478bc5676fa219ed6, type: 3}
-  - {fileID: 1051685708, guid: b847189aa86e6ca478bc5676fa219ed6, type: 3}
-  - {fileID: 442851231, guid: b847189aa86e6ca478bc5676fa219ed6, type: 3}
-  - {fileID: -884696977, guid: b847189aa86e6ca478bc5676fa219ed6, type: 3}
-  - {fileID: 2002558536, guid: b847189aa86e6ca478bc5676fa219ed6, type: 3}
-  - {fileID: -1022213447, guid: b847189aa86e6ca478bc5676fa219ed6, type: 3}
-  - {fileID: -684786146, guid: b847189aa86e6ca478bc5676fa219ed6, type: 3}
-  m_name: Ucherry
+  - {fileID: 460660149, guid: 7bccb34d51ac8d7438cb0ead81ee2856, type: 3}
+  - {fileID: 610661518, guid: 7bccb34d51ac8d7438cb0ead81ee2856, type: 3}
+  - {fileID: -368072176, guid: 7bccb34d51ac8d7438cb0ead81ee2856, type: 3}
+  - {fileID: 52145438, guid: 7bccb34d51ac8d7438cb0ead81ee2856, type: 3}
+  - {fileID: 378393345, guid: 7bccb34d51ac8d7438cb0ead81ee2856, type: 3}
+  - {fileID: -892643891, guid: 7bccb34d51ac8d7438cb0ead81ee2856, type: 3}
+  - {fileID: 1423131723, guid: 7bccb34d51ac8d7438cb0ead81ee2856, type: 3}
+  - {fileID: 1154221925, guid: 7bccb34d51ac8d7438cb0ead81ee2856, type: 3}
+  - {fileID: 1011523333, guid: 7bccb34d51ac8d7438cb0ead81ee2856, type: 3}
+  - {fileID: -1977987386, guid: 7bccb34d51ac8d7438cb0ead81ee2856, type: 3}
+  - {fileID: 1603664011, guid: 7bccb34d51ac8d7438cb0ead81ee2856, type: 3}
+  - {fileID: 1219589434, guid: 7bccb34d51ac8d7438cb0ead81ee2856, type: 3}
+  - {fileID: -2036278190, guid: 7bccb34d51ac8d7438cb0ead81ee2856, type: 3}
+  - {fileID: 84279034, guid: 7bccb34d51ac8d7438cb0ead81ee2856, type: 3}
+  - {fileID: -154601714, guid: 7bccb34d51ac8d7438cb0ead81ee2856, type: 3}
+  - {fileID: 1905761048, guid: 7bccb34d51ac8d7438cb0ead81ee2856, type: 3}
+  - {fileID: -164205301, guid: 7bccb34d51ac8d7438cb0ead81ee2856, type: 3}
+  - {fileID: 1255187298, guid: 7bccb34d51ac8d7438cb0ead81ee2856, type: 3}
+  - {fileID: 150049770, guid: 7bccb34d51ac8d7438cb0ead81ee2856, type: 3}
+  - {fileID: 1568382729, guid: 7bccb34d51ac8d7438cb0ead81ee2856, type: 3}
+  - {fileID: 363015288, guid: 7bccb34d51ac8d7438cb0ead81ee2856, type: 3}
+  - {fileID: -714713877, guid: 7bccb34d51ac8d7438cb0ead81ee2856, type: 3}
+  - {fileID: -1221001598, guid: 7bccb34d51ac8d7438cb0ead81ee2856, type: 3}
+  - {fileID: -1245458926, guid: 7bccb34d51ac8d7438cb0ead81ee2856, type: 3}
+  - {fileID: 972057710, guid: 7bccb34d51ac8d7438cb0ead81ee2856, type: 3}
+  - {fileID: 680784479, guid: 7bccb34d51ac8d7438cb0ead81ee2856, type: 3}
+  - {fileID: 1502526134, guid: 7bccb34d51ac8d7438cb0ead81ee2856, type: 3}
+  - {fileID: 1319272574, guid: 7bccb34d51ac8d7438cb0ead81ee2856, type: 3}
+  - {fileID: 1349480341, guid: 7bccb34d51ac8d7438cb0ead81ee2856, type: 3}
+  - {fileID: -1458966554, guid: 7bccb34d51ac8d7438cb0ead81ee2856, type: 3}
+  - {fileID: -1577801590, guid: 7bccb34d51ac8d7438cb0ead81ee2856, type: 3}
+  - {fileID: -1945847686, guid: 7bccb34d51ac8d7438cb0ead81ee2856, type: 3}
+  m_name: DuckJump
   keyString:
-  - U_Idle
-  - U_Catch
-  - U_Walk
-  - U_Sit
-  - U_Throw
+  - AJump
+  - BJump
+  - CJump
+  - DJump
+  - ADown
+  - BDown
+  - CDown
+  - DDown
 --- !u!1 &7229604567892776852
 GameObject:
   m_ObjectHideFlags: 0

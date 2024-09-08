@@ -10,18 +10,22 @@ public class NewFishPopup : MonoBehaviour
 
     Vector2 startPos = new Vector2(-250,35);
     Vector2 endPos= new Vector2(0,35);
+    AudioSource audio;
 
     [SerializeField] TMP_Text rareText;
     [SerializeField] TMP_Text nameText;
 
+
     void Awake()
     {
         rect = GetComponent<RectTransform>();
+        audio = GetComponent<AudioSource>();
     }
 
     private void OnEnable()
     {
         rect.anchoredPosition = startPos;
+        audio.volume = GameManager.instance.effectSound;
     }
 
     private void Update()

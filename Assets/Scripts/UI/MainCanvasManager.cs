@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
@@ -19,7 +20,6 @@ public class MainCanvasManager : MonoBehaviour
     public RectTransform startPosition;
     public RectTransform targetPosition;
 
-    [SerializeField] TMP_Text goldtext;
     [Header("업그레이드 비용 텍스트")]
     [SerializeField] TMP_Text goldCostText;
     [SerializeField] TMP_Text attackDelayCosttext;
@@ -37,16 +37,20 @@ public class MainCanvasManager : MonoBehaviour
 
     public InfoBox infoBox;
 
+    [SerializeField] Image fadeImage;
+    [SerializeField] Toggle closeToggle;
+    [Header("정보패널")]
+    [SerializeField] TMP_Text goldtext;
+    [SerializeField] Image dayImage;
+    [SerializeField] Image weatherImage;
+    [SerializeField] Sprite[] daySprite;
+    [SerializeField] Sprite[] weatherSprite;
     bool isMove = false;
     bool isOpen = false;
 
     private void Awake()
     {
         Instance = this;
-    }
-    private void Start()
-    {
-        PanelOnOff(0);
     }
 
     private void Update()
@@ -56,8 +60,8 @@ public class MainCanvasManager : MonoBehaviour
         attackDelayCosttext.text = GameDataManager.Instance.atkDelayLevel >= 30 ? $"캐스팅주기\nMax" : $"캐스팅주기\n{Cost(100, GameDataManager.Instance.atkDelayLevel)}";
         goldCostText.text = GameDataManager.Instance.goldLevel >= 15 ? $"골드획득량\nMax" : $"골드획득량\n{Cost(1000, GameDataManager.Instance.goldLevel)}";
         specialCosttext.text = GameDataManager.Instance.spacialLevel >= 30 ? $"스페셜등급\nMax" : $"스페셜등급\n{Cost(500, GameDataManager.Instance.spacialLevel)}";
-    
-    
+        dayImage.sprite = daySprite[(int)GameDataManager.Instance.dayNight-1];
+        weatherImage.sprite = weatherSprite[(int)GameDataManager.Instance.lastWeather - 1];
     }
 
     public void PanelOnOff(int num)
@@ -66,8 +70,9 @@ public class MainCanvasManager : MonoBehaviour
         {
             go.SetActive(false);
         }
+        GameManager.instance.EffectSound(0);
         panels[num].SetActive(true);
-        if(num ==1)
+        if (num == 1)
             newFishMark.SetActive(false);
     }
 
@@ -96,7 +101,7 @@ public class MainCanvasManager : MonoBehaviour
             mainPanel.anchoredPosition = Vector3.Lerp(mainPanel.anchoredPosition, moveTR.anchoredPosition, 0.5f);
         }
         isMove = false;
-        
+
     }
 
     public IEnumerator SetStoreInfo()
@@ -129,8 +134,7 @@ public class MainCanvasManager : MonoBehaviour
                     cost = Cost(200, GameDataManager.Instance.castingLevel);
                     if (cost <= GameDataManager.Instance.gold)
                     {
-                        GameManager.instance.effectAudioSource.clip = GameDataManager.Instance.resoureceManager.uiClips[2];
-                        GameManager.instance.effectAudioSource.Play();
+                        GameManager.instance.EffectSound(2);
                         GameDataManager.Instance.gold = -cost;
                         GameDataManager.Instance.castingLevel += 1;
                     }
@@ -142,8 +146,7 @@ public class MainCanvasManager : MonoBehaviour
                     cost = Cost(1000, GameDataManager.Instance.goldLevel);
                     if (cost <= GameDataManager.Instance.gold)
                     {
-                        GameManager.instance.effectAudioSource.clip = GameDataManager.Instance.resoureceManager.uiClips[2];
-                        GameManager.instance.effectAudioSource.Play();
+                        GameManager.instance.EffectSound(2);
                         GameDataManager.Instance.gold = -cost;
                         GameDataManager.Instance.goldLevel += 1;
                     }
@@ -155,8 +158,7 @@ public class MainCanvasManager : MonoBehaviour
                     cost = Cost(500, GameDataManager.Instance.spacialLevel);
                     if (cost <= GameDataManager.Instance.gold)
                     {
-                        GameManager.instance.effectAudioSource.clip = GameDataManager.Instance.resoureceManager.uiClips[2];
-                        GameManager.instance.effectAudioSource.Play();
+                        GameManager.instance.EffectSound(2);
                         GameDataManager.Instance.gold = -cost;
                         GameDataManager.Instance.spacialLevel += 1;
                         FishingSystem.instance.percentage[4] = $"{GameDataManager.Instance.spacialLevel * 10}";
@@ -169,8 +171,7 @@ public class MainCanvasManager : MonoBehaviour
                     cost = Cost(100, GameDataManager.Instance.atkDelayLevel);
                     if (cost <= GameDataManager.Instance.gold)
                     {
-                        GameManager.instance.effectAudioSource.clip = GameDataManager.Instance.resoureceManager.uiClips[2];
-                        GameManager.instance.effectAudioSource.Play();
+                        GameManager.instance.EffectSound(2);
                         GameDataManager.Instance.gold = -cost;
                         GameDataManager.Instance.atkDelayLevel += 1;
                     }
@@ -185,15 +186,12 @@ public class MainCanvasManager : MonoBehaviour
     //장소변경
     public void PlaceChange(int placeNum)
     {
-        if (isChangePlace)
+        if (isChangePlace || placeNum.Equals((int)GameDataManager.Instance.lastPlace))
             return;
         fadeImage.gameObject.SetActive(true);
         isChangePlace = true;
         StartCoroutine(PlaceChageCo(placeNum));
     }
-
-    [SerializeField] Image fadeImage;
-    [SerializeField] Toggle closeToggle;
     IEnumerator PlaceChageCo(int placeNum)
     {
         WaitForSeconds delay = new WaitForSeconds(1f);
@@ -243,6 +241,7 @@ public class MainCanvasManager : MonoBehaviour
                 guidArray.Add(guideBox.gameObject);
                 guideBox.name = GameDataManager.Instance.fishdata[keys[i]][j].id;
                 guideBox.fishData = GameDataManager.Instance.fishdata[keys[i]][j];
+                guideBox.InfoImageChange(GameDataManager.Instance.fishdata[keys[i]][j]);
                 guideBox.guideimage.sprite = GameDataManager.Instance.resoureceManager.fishSprites.FirstOrDefault(x => x.name.Equals(GameDataManager.Instance.fishdata[keys[i]][j].id));
             }
         }

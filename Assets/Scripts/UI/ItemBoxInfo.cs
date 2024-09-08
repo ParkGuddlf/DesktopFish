@@ -56,16 +56,14 @@ public class ItemBoxInfo : UIInfoData
 
                 isBuy = true;
 
-                GameManager.instance.effectAudioSource.clip = GameDataManager.Instance.resoureceManager.uiClips[1];
-                GameManager.instance.effectAudioSource.Play();
+                GameManager.instance.EffectSound(1);
             }
             else
                 return;
         }
         else
         {
-            GameManager.instance.effectAudioSource.clip = GameDataManager.Instance.resoureceManager.uiClips[0];
-            GameManager.instance.effectAudioSource.Play();
+            GameManager.instance.EffectSound(0);
         }
 
 

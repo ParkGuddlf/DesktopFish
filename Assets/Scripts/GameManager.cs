@@ -59,6 +59,7 @@ public class GameManager : BaseScene
         StartCoroutine(MainCanvasManager.Instance.SetStoreInfo());
         //데이터매니저에서 전정된값들 불러와서 지정해주기
         GameDataManager.Instance.runTimeSecond = (int)SaveIsEasyAPI.ListOfValidSaves()[0].StatisticsTotalTimeInSecondsAsTimeSpan.TotalSeconds;
+        
     }
     //캐릭터생성 및 데이터 초기화
     IEnumerator SpanwSetDataCo()
@@ -66,8 +67,9 @@ public class GameManager : BaseScene
         yield return new WaitForSeconds(0.1f);
         GameDataManager.Instance.SpawnCharecter();
         FishingSystem.instance.SetRodStatePercentage(GameDataManager.Instance.currentRod);
-        CharecterManager.instance.castingSpeed = 10- GameDataManager.Instance.castingLevel*0.5f;
+        CharecterManager.instance.castingSpeed = 10.5f - GameDataManager.Instance.castingLevel*0.5f;
         CharecterManager.instance.attackDelay = 4.1f - GameDataManager.Instance.atkDelayLevel * 0.1f;
+        FishingSystem.instance.SetFishCatchPossible();
     }
 
     public void Quit()
@@ -117,5 +119,12 @@ public class GameManager : BaseScene
     public override void Clear()
     {
         instance.Clear();
+    }
+
+    public void EffectSound(int clipNum)
+    {
+
+        effectAudioSource.clip = GameDataManager.Instance.resoureceManager.uiClips[clipNum];
+        effectAudioSource.Play();
     }
 }

@@ -778,9 +778,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 16
-        y: 160
-        width: 49
-        height: 33
+        y: 150
+        width: 48
+        height: 42
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -904,9 +904,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 16
-        y: 111
-        width: 49
-        height: 48
+        y: 109
+        width: 48
+        height: 40
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -963,13 +963,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 2_Place2
+      name: 2_Place23
       rect:
         serializedVersion: 2
         x: 187
         y: 120
         width: 9
-        height: 4
+        height: 5
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -990,7 +990,7 @@ TextureImporter:
         x: 187
         y: 126
         width: 9
-        height: 4
+        height: 5
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1008,9 +1008,9 @@ TextureImporter:
       name: 2_Weather3
       rect:
         serializedVersion: 2
-        x: 198
+        x: 197
         y: 119
-        width: 5
+        width: 7
         height: 5
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -1050,9 +1050,9 @@ TextureImporter:
       name: 2_Day1
       rect:
         serializedVersion: 2
-        x: 206
+        x: 208
         y: 126
-        width: 5
+        width: 7
         height: 5
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -1068,7 +1068,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 2_Place3
+      name: 2_Place2
       rect:
         serializedVersion: 2
         x: 187
@@ -1449,9 +1449,9 @@ TextureImporter:
       name: 2_Day2
       rect:
         serializedVersion: 2
-        x: 206
-        y: 120
-        width: 5
+        x: 208
+        y: 121
+        width: 7
         height: 5
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -1462,6 +1462,48 @@ TextureImporter:
       bones: []
       spriteID: 9581285f42e52d94581df6da430b083e
       internalID: 1279576764
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 2_All
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 114
+        width: 7
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 94d039c6d09fab34c8c3c6f77a082cb4
+      internalID: 1414393827
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 0_EquipBox
+      rect:
+        serializedVersion: 2
+        x: 179
+        y: 256
+        width: 27
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: adc36fd8904e7bb4aad1135ca27d3c6f
+      internalID: 657806427
       vertices: []
       indices: 
       edges: []
@@ -1480,6 +1522,7 @@ TextureImporter:
       0_CharecterToggle: -2042319449
       0_CharecterToggleChack: -1228093711
       0_CloseToggle: -1483763622
+      0_EquipBox: 657806427
       0_GuideToggle: 1322937958
       0_GuideToggleChack: -201423826
       0_MomeyUI: 2002335816
@@ -1496,12 +1539,13 @@ TextureImporter:
       1_RodBox: 454872528
       1_StateUPBox: -1074574686
       1_UpIcon: -1490550294
+      2_All: 1414393827
       2_Day1: -2044024250
       2_Day2: 1279576764
       2_GuideBox: 1460758517
       2_Place1: -461181631
-      2_Place2: 122468339
-      2_Place3: 1054057363
+      2_Place2: 1054057363
+      2_Place23: 122468339
       2_Weather1: -1469209368
       2_Weather2: 1275413842
       2_Weather3: -367206413

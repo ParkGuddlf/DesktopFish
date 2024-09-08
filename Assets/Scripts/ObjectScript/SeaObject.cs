@@ -6,10 +6,11 @@ using UnityEngine.EventSystems;
 public class SeaObject : MonoBehaviour
 {
     SpriteRenderer spriteRenderer;
-
+    [SerializeField] AudioSource audioSource;
     private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void OnEnable()
@@ -23,15 +24,14 @@ public class SeaObject : MonoBehaviour
         float randomX = Random.Range(screenBoundsBottomLeft.x, screenBoundsTopRight.x);
         transform.position = new Vector3(randomX, 0,0);
     }
-    private void Update()
+    private void OnMouseUp()
     {
-        if (GetComponent<TargetJoint2D>())
-            if (Input.GetMouseButtonUp(0))
-                DestroyObject();
+        audioSource.volume = GameManager.instance.effectSound;
+        audioSource.Play();
+        Invoke("DestroyObject", 0.01f);
     }
-
     void DestroyObject()
-    {
+    {        
         float gold = Random.Range(50, 150);
         GameDataManager.Instance.gold = gold;
         GameDataManager.Instance.CatchObjectCount++;

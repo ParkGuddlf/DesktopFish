@@ -108,7 +108,7 @@ public class CharecterManager : MonoBehaviour
     }
     void StateReset()
     {
-        castingSpeed = 10 - GameDataManager.Instance.castingLevel * 0.5f;
+        castingSpeed = 10.5f - GameDataManager.Instance.castingLevel * 0.5f;
         attackDelay = 4.1f - GameDataManager.Instance.atkDelayLevel * 0.1f;
         throwDelay = 1f;
         catchDelay = 0.5f;

@@ -56,11 +56,13 @@ public class WeatherLight : MonoBehaviour
             if (gameDataManager.weatherTimer / 120f >= 1)
             {
                 gameDataManager.lastWeather = (Weather)Random.Range(1, 4);
+                FishingSystem.instance.SetFishCatchPossible();
                 gameDataManager.weatherTimer = 0;
             }
             if (gameDataManager.dayTimer / 60f >= 1)
             {
                 gameDataManager.dayNight = gameDataManager.dayNight.Equals(DateTime.morning) ? DateTime.night : DateTime.morning;
+                FishingSystem.instance.SetFishCatchPossible();
                 gameDataManager.dayTimer = 0;
             }
             if (gameDataManager.spownTimer / 30f >= 1)
