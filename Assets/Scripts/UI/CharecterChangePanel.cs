@@ -19,7 +19,7 @@ public class CharecterChangePanel : MonoBehaviour
     private void OnEnable()
     {
         charnum = (int)GameDataManager.Instance.lastCharecter;
-        ChangeCharNum(charnum);
+        ChangeCharNum(0);
     }
 
     public void ChangeCharNum(int num)

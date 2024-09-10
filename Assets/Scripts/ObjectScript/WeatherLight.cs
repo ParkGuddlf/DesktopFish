@@ -46,6 +46,7 @@ public class WeatherLight : MonoBehaviour
                 break;
         }
     }
+
     private void Update()
     {
         if (GameManager.instance.isStart)
@@ -65,10 +66,14 @@ public class WeatherLight : MonoBehaviour
                 FishingSystem.instance.SetFishCatchPossible();
                 gameDataManager.dayTimer = 0;
             }
-            if (gameDataManager.spownTimer / 30f >= 1)
+            if (gameDataManager.spownTimer / 180f >= 1)
             {
-                Managers.Resource.Instantiate("SeaObject");
-                gameDataManager.spownTimer = 0;
+                if (gameDataManager.SeaObjectCount < 11)
+                {
+                    Managers.Resource.Instantiate("SeaObject");
+                    gameDataManager.SeaObjectCount++;
+                    gameDataManager.spownTimer = 0;
+                }
             }
 
             light2D.color = Color.Lerp(light2D.color, TargetColor(), 0.05f);

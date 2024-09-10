@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
@@ -114,9 +115,20 @@ public class TransparentWindow : MonoBehaviour
 			Debug.LogError("Couldn't get Window Rect");
 		}
 
-		SetWindowLong(hwnd, GWL_STYLE, WS_POPUP | WS_VISIBLE);
-		SetWindowPos(hwnd, HWND_TOPMOST, windowRect.Left, windowRect.Top, fWidth, fHeight, 32 | 64);
-		DwmExtendFrameIntoClientArea(hwnd, ref margins);
+        if(fWidth>=fHeight)
+        {		
+		    SetWindowLong(hwnd, GWL_STYLE, WS_POPUP | WS_VISIBLE);
+		    SetWindowPos(hwnd, HWND_TOPMOST, windowRect.Left, windowRect.Top, fWidth, fHeight, 32 | 64);
+		    DwmExtendFrameIntoClientArea(hwnd, ref margins);
+            isVertical=false;
+        }
+        else
+        {
+		    SetWindowLong(hwnd, GWL_STYLE, WS_POPUP | WS_VISIBLE);
+		    SetWindowPos(hwnd, HWND_TOPMOST, windowRect.Left, windowRect.Top, fHeight, fWidth, 32 | 64);
+		    DwmExtendFrameIntoClientArea(hwnd, ref margins);
+            isVertical=true;
+        }
 #endif
     }
 
@@ -124,7 +136,6 @@ public class TransparentWindow : MonoBehaviour
     {
         SceneManager.LoadScene("GameScene");
     }
-
     void Update()
     {
         if (useSystemInput)
@@ -138,6 +149,7 @@ public class TransparentWindow : MonoBehaviour
     }
 
     int currentdisplayNum = 0;
+    public bool isVertical = false;
     public void MoveWindowToNextDisplay(int value)
     {
         if (value < 0 || value >= Display.displays.Length)
@@ -159,6 +171,13 @@ public class TransparentWindow : MonoBehaviour
         screenResolution = new Vector2Int(Display.displays[value].systemWidth, Display.displays[value].systemHeight);
         Screen.SetResolution(screenResolution.x, screenResolution.y, fullscreen ? FullScreenMode.FullScreenWindow : FullScreenMode.Windowed);
         currentdisplayNum = value;
+
+        if(Display.displays[value].systemWidth > Display.displays[value].renderingHeight)
+            isVertical=false;
+        else
+            isVertical=true;
+
+
 #if !UNITY_EDITOR
 		fWidth = screenResolution.x;
 		int titleBarHeight = GetSystemMetrics(SM_CYCAPTION);
@@ -170,10 +189,18 @@ public class TransparentWindow : MonoBehaviour
 		{
 			Debug.LogError("Couldn't get Window Rect");
 		}
-
-		SetWindowLong(hwnd, GWL_STYLE, WS_POPUP | WS_VISIBLE);
-		SetWindowPos(hwnd, GameManager.instance.isMostTop ? HWND_TOPMOST : HWND_NOTOPMOST, newX, windowRect.Top, fWidth, fHeight, 32 | 64);
-		DwmExtendFrameIntoClientArea(hwnd, ref margins);
+        if(fWidth>=fHeight)
+        {		
+            SetWindowLong(hwnd, GWL_STYLE, WS_POPUP | WS_VISIBLE);
+		    SetWindowPos(hwnd, GameManager.instance.isMostTop ? HWND_TOPMOST : HWND_NOTOPMOST, newX, windowRect.Top, fWidth, fHeight, 32 | 64);
+		    DwmExtendFrameIntoClientArea(hwnd, ref margins);
+        }
+        else
+        {
+            SetWindowLong(hwnd, GWL_STYLE, WS_POPUP | WS_VISIBLE);
+		    SetWindowPos(hwnd, GameManager.instance.isMostTop ? HWND_TOPMOST : HWND_NOTOPMOST, newX, windowRect.Top, fHeight, fWidth, 32 | 64);
+		    DwmExtendFrameIntoClientArea(hwnd, ref margins);
+        }
 #endif
     }
 

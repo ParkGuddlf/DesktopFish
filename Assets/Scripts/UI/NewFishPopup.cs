@@ -58,15 +58,15 @@ public class NewFishPopup : MonoBehaviour
             switch (fishData.rare)
             {
                 case "Common":
-                    return "Common";
+                    return "<color=#4B4B4B>Common</color>";
                 case "Nomal":
-                    return "<color=green>Nomal<color=green>";
+                    return "<color=#00B709>Nomal</color>";
                 case "Rare":
-                    return "<color=blue>Rare<color=blue>";
+                    return "<color=blue>Rare</color>";
                 case "Epic":
-                    return "<color=purple>Epic<color=purple>";
+                    return "<color=purple>Epic</color>";
                 case "Spacial":
-                    return "<color=orange>Spacial<color=orange>";
+                    return "<color=orange>Spacial</color>";
                 default:
                     return "";
             }

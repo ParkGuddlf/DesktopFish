@@ -13,7 +13,6 @@ public class TEsttest : MonoBehaviour
     SpriteLibraryAsset[] spriteLibraryAssets;
 
     Animator animator;
-    ParticleSystem particleSystem;
     AudioSource audioSource;
 
     public bool isJump;
@@ -23,7 +22,6 @@ public class TEsttest : MonoBehaviour
         library = GetComponent<SpriteLibrary>();
         animator = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
-        particleSystem = GetComponent<ParticleSystem>();
     }
 
     private void Update()
@@ -61,7 +59,10 @@ public class TEsttest : MonoBehaviour
     }
     public void vooasd()
     {
-        particleSystem.Play();
+        var text = Managers.Resource.Instantiate("PopupTextCanvas");
+        text.GetComponent<TextPopup>().textChange($"<color=yellow>+1 gold<color=yellow>");
+        text.transform.position = transform.position;
+        text.transform.localScale = Vector3.one * 0.01f;
         isJump = false;
         GameDataManager.Instance.gold = 1;
         audioSource.volume = GameManager.instance.effectSound;

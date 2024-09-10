@@ -55,7 +55,7 @@ public class MainCanvasManager : MonoBehaviour
 
     private void Update()
     {
-        goldtext.text = $"{GameDataManager.Instance.gold}";
+        goldtext.text = $"{GameDataManager.Instance.gold.ToString("F0")}";
         casttingSpeedCosttext.text = GameDataManager.Instance.castingLevel >= 15 ? $"√§¡˝º”µµ\nMax" : $"√§¡˝º”µµ\n{Cost(200, GameDataManager.Instance.castingLevel)}";
         attackDelayCosttext.text = GameDataManager.Instance.atkDelayLevel >= 30 ? $"ƒ≥Ω∫∆√¡÷±‚\nMax" : $"ƒ≥Ω∫∆√¡÷±‚\n{Cost(100, GameDataManager.Instance.atkDelayLevel)}";
         goldCostText.text = GameDataManager.Instance.goldLevel >= 15 ? $"∞ÒµÂ»πµÊ∑Æ\nMax" : $"∞ÒµÂ»πµÊ∑Æ\n{Cost(1000, GameDataManager.Instance.goldLevel)}";

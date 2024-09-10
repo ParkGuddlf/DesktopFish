@@ -135,6 +135,7 @@ public class FishingSystem : MonoBehaviour
                 currentFishData = possibleCommon[UnityEngine.Random.Range(0, possibleCommon.Count)];
                 break;
         }
+        currentFishHp = currentFishData.hp;
     }
 
     public void CatchFish(bool fever)

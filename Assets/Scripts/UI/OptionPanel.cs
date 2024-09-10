@@ -46,7 +46,20 @@ public class OptionPanel : MonoBehaviour
     }
     public void ChangedDisPlay()
     {
-        Camera.main.GetComponent<TransparentWindow>().MoveWindowToNextDisplay(dropdown.value);
+        var _camera = Camera.main;
+        _camera.GetComponent<TransparentWindow>().MoveWindowToNextDisplay(dropdown.value);
+        if (!_camera.GetComponent<TransparentWindow>().isVertical)
+        {
+            _camera.orthographicSize = 10 - (2.5f * GameManager.instance.zoomLevel);
+            _camera.transform.position = new Vector3(4.5f * GameManager.instance.zoomLevel, -2.5f * GameManager.instance.zoomLevel);
+        }
+        else
+        {
+            //카메라사이즈12 - 21 - 30
+            //제일작은게 10,2 - 5,11 - 0,20
+            _camera.orthographicSize = 21 - (4.5f * GameManager.instance.zoomLevel);
+            _camera.transform.position = new Vector3(5 + (2.5f * GameManager.instance.zoomLevel), 11 - (4.5f * GameManager.instance.zoomLevel));
+        }
     }
 
     public void ChangeCharecter()

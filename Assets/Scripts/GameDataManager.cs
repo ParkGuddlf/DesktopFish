@@ -37,7 +37,8 @@ public class GameDataManager : MonoBehaviour
         set
         {
             Gold += value;
-            earnedGold += value;
+            if(value>0)
+                earnedGold += value;
         }
     }
     public string currentRod = "a001";
@@ -83,6 +84,7 @@ public class GameDataManager : MonoBehaviour
     public float CatchObjectCount;
     public float runTimeSecond;
 
+    public int SeaObjectCount = 0;
 
     //여기에 저장 될때 마다 팝업창 띄우기 뭐를 잡았습니다
     public List<string> saveGuideFish = new List<string>();
