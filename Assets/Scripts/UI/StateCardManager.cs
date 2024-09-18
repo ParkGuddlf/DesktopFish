@@ -3,7 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class StateCardManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class StateCardManager : MonoBehaviour
 {
     private float timer = 0f;
 
@@ -25,33 +25,29 @@ public class StateCardManager : MonoBehaviour, IPointerEnterHandler, IPointerExi
     private void Start()
     {
         gameDataManager = GameDataManager.Instance;
-    }
-
-    public void OnPointerEnter(PointerEventData eventData)
-    {
-        card.SetActive(true);
-    }
-
-    public void OnPointerExit(PointerEventData eventData)
-    {
         card.SetActive(false);
+    }
+
+    public void SetPanelActive()
+    {
+        card.SetActive(!card.activeSelf);
     }
 
     private void Update()
     {
-        totalgold.text = $"누적골드\n{gameDataManager.earnedGold}";
+        totalgold.text = $"{gameDataManager.earnedGold}";
         runtime.text = TimeString();
-        totalfish.text = $"누적물고기\n{gameDataManager.fishCatchCount}";
-        guidePersent.text = $"도감완성도\n{(gameDataManager.saveGuideFish.Count * 100) / gameDataManager.totalFish}%";
-        totalObject.text = $"구한물건\n{gameDataManager.CatchObjectCount}";
+        totalfish.text = $"{gameDataManager.fishCatchCount}";
+        guidePersent.text = $"{(gameDataManager.saveGuideFish.Count * 100) / gameDataManager.totalFish}%";
+        totalObject.text = $"{gameDataManager.CatchObjectCount}";
         if (gameDataManager.equipdata["Rod"].Count > 1)
         {
-            damage.text = $"공격력\n{gameDataManager.equipdata["Rod"].Find(x => gameDataManager.currentRod == x.id).attack}";
+            damage.text = $"{gameDataManager.equipdata["Rod"].Find(x => gameDataManager.currentRod == x.id).attack}";
         }
-        castingTime.text = $"대기시간\n{10.5f - gameDataManager.castingLevel * 0.5f}초";
-        GoldLv.text = $"골드배율\n{gameDataManager.goldLevel}배";
-        castingDelay.text = $"캐스팅주기\n{4.1f - gameDataManager.atkDelayLevel * 0.1f}초";
-        spacialLv.text = $"스페셜등급확률\n{(float)gameDataManager.spacialLevel * 1000 / 10000}%";
+        castingTime.text = $"{10.5f - gameDataManager.castingLevel * 0.5f}초";
+        GoldLv.text = $"{gameDataManager.goldLevel}배";
+        castingDelay.text = $"{4.1f - gameDataManager.atkDelayLevel * 0.1f}초";
+        spacialLv.text = ((float)gameDataManager.spacialLevel*5 * 100 / (10000+ gameDataManager.spacialLevel*5)).ToString("F2")+"%";
 
         timer += Time.deltaTime;
         if (timer >= 1f)
@@ -67,23 +63,32 @@ public class StateCardManager : MonoBehaviour, IPointerEnterHandler, IPointerExi
     {
         TimeSpan time = TimeSpan.FromSeconds(gameDataManager.runTimeSecond);
 
-        return string.Format("플레이타임{0:D2}:{1:D2}:{2:D2}", time.Hours, time.Minutes, time.Seconds);
+        return string.Format("{0:D2}:{1:D2}:{2:D2}", time.Hours, time.Minutes, time.Seconds);
     }
 
-    [SerializeField] GameObject[] challengeIcon;
+    [SerializeField] Challenge[] challengeIcon;
 
     void Challenge()
     {
-        challengeIcon[0].SetActive(gameDataManager.totalFish == gameDataManager.saveGuideFish.Count);
-        challengeIcon[1].SetActive(BuyChallenge());
-        challengeIcon[2].SetActive(gameDataManager.CatchObjectCount > 100);
-        challengeIcon[3].SetActive(challengeIcon[0].activeSelf && challengeIcon[1].activeSelf && challengeIcon[2].activeSelf);
+        challengeIcon[0].VisionChallenge(gameDataManager.totalFish == gameDataManager.saveGuideFish.Count);
+        challengeIcon[1].VisionChallenge(BuyChallenge());
+        challengeIcon[2].VisionChallenge(gameDataManager.CatchObjectCount > 100);
+        challengeIcon[3].VisionChallenge(IsAllChallenge());
+    }
+    bool IsAllChallenge()
+    {
+        for (int i = 0; i < challengeIcon.Length-1; i++) 
+        {
+            if (!challengeIcon[i].clear)
+                return false;
+        }
+        return true;
     }
     bool BuyChallenge()
     {
-        if(gameDataManager.rod.Count == gameDataManager.equipdata["Rod"].Count)
+        if (gameDataManager.rod.Count == gameDataManager.equipdata["Rod"].Count)
         {
-            if (gameDataManager.castingLevel >= 15 && gameDataManager.goldLevel >= 15 && gameDataManager.spacialLevel >= 30 && gameDataManager.atkDelayLevel >= 30)
+            if (gameDataManager.castingLevel >= 15 && gameDataManager.goldLevel >= 10 && gameDataManager.spacialLevel >= 30 && gameDataManager.atkDelayLevel >= 30)
             {
                 return true;
             }

@@ -126,12 +126,12 @@ TextureImporter:
       name: Challenge_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 352
-        width: 16
-        height: 32
+        x: 3
+        y: 358
+        width: 11
+        height: 15
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -147,12 +147,12 @@ TextureImporter:
       name: Challenge_1
       rect:
         serializedVersion: 2
-        x: 16
-        y: 352
-        width: 16
-        height: 32
+        x: 20
+        y: 357
+        width: 9
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -168,12 +168,12 @@ TextureImporter:
       name: Challenge_2
       rect:
         serializedVersion: 2
-        x: 32
-        y: 352
-        width: 16
-        height: 32
+        x: 34
+        y: 358
+        width: 11
+        height: 15
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -189,12 +189,12 @@ TextureImporter:
       name: Challenge_3
       rect:
         serializedVersion: 2
-        x: 48
-        y: 352
-        width: 16
-        height: 32
+        x: 51
+        y: 357
+        width: 11
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -210,12 +210,12 @@ TextureImporter:
       name: Challenge_4
       rect:
         serializedVersion: 2
-        x: 64
-        y: 352
-        width: 16
-        height: 32
+        x: 65
+        y: 357
+        width: 14
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -231,12 +231,12 @@ TextureImporter:
       name: Challenge_5
       rect:
         serializedVersion: 2
-        x: 0
-        y: 320
-        width: 16
-        height: 32
+        x: 3
+        y: 326
+        width: 11
+        height: 15
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -252,12 +252,12 @@ TextureImporter:
       name: Challenge_6
       rect:
         serializedVersion: 2
-        x: 16
-        y: 320
-        width: 16
-        height: 32
+        x: 20
+        y: 325
+        width: 9
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -273,12 +273,12 @@ TextureImporter:
       name: Challenge_7
       rect:
         serializedVersion: 2
-        x: 32
-        y: 320
-        width: 16
-        height: 32
+        x: 34
+        y: 326
+        width: 11
+        height: 15
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -294,12 +294,12 @@ TextureImporter:
       name: Challenge_8
       rect:
         serializedVersion: 2
-        x: 48
-        y: 320
-        width: 16
-        height: 32
+        x: 51
+        y: 325
+        width: 11
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -315,12 +315,12 @@ TextureImporter:
       name: Challenge_9
       rect:
         serializedVersion: 2
-        x: 64
-        y: 320
-        width: 16
-        height: 32
+        x: 65
+        y: 325
+        width: 14
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -336,12 +336,12 @@ TextureImporter:
       name: Challenge_10
       rect:
         serializedVersion: 2
-        x: 0
-        y: 288
-        width: 16
-        height: 32
+        x: 3
+        y: 294
+        width: 11
+        height: 15
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -357,12 +357,12 @@ TextureImporter:
       name: Challenge_11
       rect:
         serializedVersion: 2
-        x: 16
-        y: 288
-        width: 16
-        height: 32
+        x: 20
+        y: 293
+        width: 9
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -378,12 +378,12 @@ TextureImporter:
       name: Challenge_12
       rect:
         serializedVersion: 2
-        x: 32
-        y: 288
-        width: 16
-        height: 32
+        x: 34
+        y: 294
+        width: 11
+        height: 15
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -399,12 +399,12 @@ TextureImporter:
       name: Challenge_13
       rect:
         serializedVersion: 2
-        x: 48
-        y: 288
-        width: 16
-        height: 32
+        x: 51
+        y: 293
+        width: 11
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -420,12 +420,12 @@ TextureImporter:
       name: Challenge_14
       rect:
         serializedVersion: 2
-        x: 64
-        y: 288
-        width: 16
-        height: 32
+        x: 65
+        y: 293
+        width: 14
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -441,12 +441,12 @@ TextureImporter:
       name: Challenge_15
       rect:
         serializedVersion: 2
-        x: 0
-        y: 256
-        width: 16
-        height: 32
+        x: 3
+        y: 262
+        width: 11
+        height: 15
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -462,12 +462,12 @@ TextureImporter:
       name: Challenge_16
       rect:
         serializedVersion: 2
-        x: 16
-        y: 256
-        width: 16
-        height: 32
+        x: 20
+        y: 261
+        width: 9
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -483,12 +483,12 @@ TextureImporter:
       name: Challenge_17
       rect:
         serializedVersion: 2
-        x: 32
-        y: 256
-        width: 16
-        height: 32
+        x: 34
+        y: 262
+        width: 11
+        height: 15
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -504,12 +504,12 @@ TextureImporter:
       name: Challenge_18
       rect:
         serializedVersion: 2
-        x: 48
-        y: 256
-        width: 16
-        height: 32
+        x: 51
+        y: 261
+        width: 11
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -525,12 +525,12 @@ TextureImporter:
       name: Challenge_19
       rect:
         serializedVersion: 2
-        x: 64
-        y: 256
-        width: 16
-        height: 32
+        x: 65
+        y: 261
+        width: 14
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -546,12 +546,12 @@ TextureImporter:
       name: Challenge_20
       rect:
         serializedVersion: 2
-        x: 0
-        y: 224
-        width: 16
-        height: 32
+        x: 3
+        y: 230
+        width: 11
+        height: 15
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -567,12 +567,12 @@ TextureImporter:
       name: Challenge_21
       rect:
         serializedVersion: 2
-        x: 16
-        y: 224
-        width: 16
-        height: 32
+        x: 20
+        y: 229
+        width: 9
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -588,12 +588,12 @@ TextureImporter:
       name: Challenge_22
       rect:
         serializedVersion: 2
-        x: 32
-        y: 224
-        width: 16
-        height: 32
+        x: 34
+        y: 230
+        width: 11
+        height: 15
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -609,12 +609,12 @@ TextureImporter:
       name: Challenge_23
       rect:
         serializedVersion: 2
-        x: 48
-        y: 224
-        width: 16
-        height: 32
+        x: 51
+        y: 229
+        width: 11
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -630,12 +630,12 @@ TextureImporter:
       name: Challenge_24
       rect:
         serializedVersion: 2
-        x: 64
-        y: 224
-        width: 16
-        height: 32
+        x: 65
+        y: 229
+        width: 14
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -651,12 +651,12 @@ TextureImporter:
       name: Challenge_25
       rect:
         serializedVersion: 2
-        x: 0
-        y: 192
-        width: 16
-        height: 32
+        x: 3
+        y: 198
+        width: 11
+        height: 15
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -672,12 +672,12 @@ TextureImporter:
       name: Challenge_26
       rect:
         serializedVersion: 2
-        x: 16
-        y: 192
-        width: 16
-        height: 32
+        x: 20
+        y: 197
+        width: 9
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -693,12 +693,12 @@ TextureImporter:
       name: Challenge_27
       rect:
         serializedVersion: 2
-        x: 32
-        y: 192
-        width: 16
-        height: 32
+        x: 34
+        y: 198
+        width: 11
+        height: 15
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -714,12 +714,12 @@ TextureImporter:
       name: Challenge_28
       rect:
         serializedVersion: 2
-        x: 48
-        y: 192
-        width: 16
-        height: 32
+        x: 51
+        y: 197
+        width: 11
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -735,12 +735,12 @@ TextureImporter:
       name: Challenge_29
       rect:
         serializedVersion: 2
-        x: 64
-        y: 192
-        width: 16
-        height: 32
+        x: 65
+        y: 197
+        width: 14
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -756,12 +756,12 @@ TextureImporter:
       name: Challenge_30
       rect:
         serializedVersion: 2
-        x: 0
-        y: 160
-        width: 16
-        height: 32
+        x: 3
+        y: 166
+        width: 11
+        height: 15
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -777,12 +777,12 @@ TextureImporter:
       name: Challenge_31
       rect:
         serializedVersion: 2
-        x: 16
-        y: 160
-        width: 16
-        height: 32
+        x: 20
+        y: 165
+        width: 9
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -798,12 +798,12 @@ TextureImporter:
       name: Challenge_32
       rect:
         serializedVersion: 2
-        x: 32
-        y: 160
-        width: 16
-        height: 32
+        x: 34
+        y: 166
+        width: 11
+        height: 15
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -819,12 +819,12 @@ TextureImporter:
       name: Challenge_33
       rect:
         serializedVersion: 2
-        x: 48
-        y: 160
-        width: 16
-        height: 32
+        x: 51
+        y: 165
+        width: 11
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -840,12 +840,12 @@ TextureImporter:
       name: Challenge_34
       rect:
         serializedVersion: 2
-        x: 64
-        y: 160
-        width: 16
-        height: 32
+        x: 65
+        y: 165
+        width: 14
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -861,12 +861,12 @@ TextureImporter:
       name: Challenge_35
       rect:
         serializedVersion: 2
-        x: 0
-        y: 128
-        width: 16
-        height: 32
+        x: 3
+        y: 134
+        width: 11
+        height: 15
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -882,12 +882,12 @@ TextureImporter:
       name: Challenge_36
       rect:
         serializedVersion: 2
-        x: 16
-        y: 128
-        width: 16
-        height: 32
+        x: 20
+        y: 133
+        width: 9
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -903,12 +903,12 @@ TextureImporter:
       name: Challenge_37
       rect:
         serializedVersion: 2
-        x: 32
-        y: 128
-        width: 16
-        height: 32
+        x: 34
+        y: 134
+        width: 11
+        height: 15
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -924,12 +924,12 @@ TextureImporter:
       name: Challenge_38
       rect:
         serializedVersion: 2
-        x: 48
-        y: 128
-        width: 16
-        height: 32
+        x: 51
+        y: 133
+        width: 11
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -945,12 +945,12 @@ TextureImporter:
       name: Challenge_39
       rect:
         serializedVersion: 2
-        x: 64
-        y: 128
-        width: 16
-        height: 32
+        x: 65
+        y: 133
+        width: 14
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -966,12 +966,12 @@ TextureImporter:
       name: Challenge_40
       rect:
         serializedVersion: 2
-        x: 0
-        y: 96
-        width: 16
-        height: 32
+        x: 3
+        y: 102
+        width: 11
+        height: 15
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -987,12 +987,12 @@ TextureImporter:
       name: Challenge_41
       rect:
         serializedVersion: 2
-        x: 16
-        y: 96
-        width: 16
-        height: 32
+        x: 20
+        y: 101
+        width: 9
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1008,12 +1008,12 @@ TextureImporter:
       name: Challenge_42
       rect:
         serializedVersion: 2
-        x: 32
-        y: 96
-        width: 16
-        height: 32
+        x: 34
+        y: 102
+        width: 11
+        height: 15
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1029,12 +1029,12 @@ TextureImporter:
       name: Challenge_43
       rect:
         serializedVersion: 2
-        x: 48
-        y: 96
-        width: 16
-        height: 32
+        x: 51
+        y: 101
+        width: 11
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1050,12 +1050,12 @@ TextureImporter:
       name: Challenge_44
       rect:
         serializedVersion: 2
-        x: 64
-        y: 96
-        width: 16
-        height: 32
+        x: 65
+        y: 101
+        width: 14
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1071,12 +1071,12 @@ TextureImporter:
       name: Challenge_45
       rect:
         serializedVersion: 2
-        x: 0
-        y: 64
-        width: 16
-        height: 32
+        x: 3
+        y: 70
+        width: 11
+        height: 15
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1092,12 +1092,12 @@ TextureImporter:
       name: Challenge_46
       rect:
         serializedVersion: 2
-        x: 16
-        y: 64
-        width: 16
-        height: 32
+        x: 20
+        y: 69
+        width: 9
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1113,12 +1113,12 @@ TextureImporter:
       name: Challenge_47
       rect:
         serializedVersion: 2
-        x: 32
-        y: 64
-        width: 16
-        height: 32
+        x: 34
+        y: 70
+        width: 11
+        height: 15
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1134,12 +1134,12 @@ TextureImporter:
       name: Challenge_48
       rect:
         serializedVersion: 2
-        x: 48
-        y: 64
-        width: 16
-        height: 32
+        x: 51
+        y: 69
+        width: 11
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1155,12 +1155,12 @@ TextureImporter:
       name: Challenge_49
       rect:
         serializedVersion: 2
-        x: 64
-        y: 64
-        width: 16
-        height: 32
+        x: 65
+        y: 69
+        width: 14
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1176,12 +1176,12 @@ TextureImporter:
       name: Challenge_50
       rect:
         serializedVersion: 2
-        x: 0
-        y: 32
-        width: 16
-        height: 32
+        x: 3
+        y: 38
+        width: 11
+        height: 15
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1197,12 +1197,12 @@ TextureImporter:
       name: Challenge_51
       rect:
         serializedVersion: 2
-        x: 16
-        y: 32
-        width: 16
-        height: 32
+        x: 20
+        y: 37
+        width: 9
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1218,12 +1218,12 @@ TextureImporter:
       name: Challenge_52
       rect:
         serializedVersion: 2
-        x: 32
-        y: 32
-        width: 16
-        height: 32
+        x: 34
+        y: 38
+        width: 11
+        height: 15
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1239,12 +1239,12 @@ TextureImporter:
       name: Challenge_53
       rect:
         serializedVersion: 2
-        x: 48
-        y: 32
-        width: 16
-        height: 32
+        x: 51
+        y: 37
+        width: 11
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1260,12 +1260,12 @@ TextureImporter:
       name: Challenge_54
       rect:
         serializedVersion: 2
-        x: 64
-        y: 32
-        width: 16
-        height: 32
+        x: 65
+        y: 37
+        width: 14
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1281,12 +1281,12 @@ TextureImporter:
       name: Challenge_55
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 16
-        height: 32
+        x: 3
+        y: 6
+        width: 11
+        height: 15
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1302,12 +1302,12 @@ TextureImporter:
       name: Challenge_56
       rect:
         serializedVersion: 2
-        x: 16
-        y: 0
-        width: 16
-        height: 32
+        x: 20
+        y: 5
+        width: 9
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1323,12 +1323,12 @@ TextureImporter:
       name: Challenge_57
       rect:
         serializedVersion: 2
-        x: 32
-        y: 0
-        width: 16
-        height: 32
+        x: 34
+        y: 6
+        width: 11
+        height: 15
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1344,12 +1344,12 @@ TextureImporter:
       name: Challenge_58
       rect:
         serializedVersion: 2
-        x: 48
-        y: 0
-        width: 16
-        height: 32
+        x: 51
+        y: 5
+        width: 11
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1365,12 +1365,12 @@ TextureImporter:
       name: Challenge_59
       rect:
         serializedVersion: 2
-        x: 64
-        y: 0
-        width: 16
-        height: 32
+        x: 65
+        y: 5
+        width: 14
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

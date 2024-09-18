@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bf7c34a0dc4e6348bea04faa70406ee, type: 3}
+  m_Name: ChallengeA
+  m_EditorClassIdentifier: 
+  m_Labels:
+  - m_Name: Challenge
+    m_Hash: 368577522
+    m_CategoryList:
+    - m_Name: 0
+      m_Hash: 886824737
+      m_Sprite: {fileID: 1255867593, guid: 629d4473db3f00d4c8909a2d817e7c34, type: 3}
+    - m_Name: 1
+      m_Hash: 64810935
+      m_Sprite: {fileID: 493752647, guid: 629d4473db3f00d4c8909a2d817e7c34, type: 3}
+    - m_Name: 2
+      m_Hash: 450215437
+      m_Sprite: {fileID: 674013382, guid: 629d4473db3f00d4c8909a2d817e7c34, type: 3}
+    - m_Name: 3
+      m_Hash: 768773787
+      m_Sprite: {fileID: 1602671279, guid: 629d4473db3f00d4c8909a2d817e7c34, type: 3}
+    - m_Name: 4
+      m_Hash: 867572536
+      m_Sprite: {fileID: 1722620713, guid: 629d4473db3f00d4c8909a2d817e7c34, type: 3}
+    - m_Name: 5
+      m_Hash: 78719918
+      m_Sprite: {fileID: 494399409, guid: 629d4473db3f00d4c8909a2d817e7c34, type: 3}
+    - m_Name: 6
+      m_Hash: 498629140
+      m_Sprite: {fileID: 2145590739, guid: 629d4473db3f00d4c8909a2d817e7c34, type: 3}
+    - m_Name: 7
+      m_Hash: 717179522
+      m_Sprite: {fileID: 2062158937, guid: 629d4473db3f00d4c8909a2d817e7c34, type: 3}
+    - m_Name: 8
+      m_Hash: 973100819
+      m_Sprite: {fileID: -1219469997, guid: 629d4473db3f00d4c8909a2d817e7c34, type: 3}
+    - m_Name: 9
+      m_Hash: 218589061
+      m_Sprite: {fileID: -2054335165, guid: 629d4473db3f00d4c8909a2d817e7c34, type: 3}
+    - m_Name: 10
+      m_Hash: 559752673
+      m_Sprite: {fileID: 478100258, guid: 629d4473db3f00d4c8909a2d817e7c34, type: 3}
+    - m_Name: 11
+      m_Hash: 375002487
+      m_Sprite: {fileID: -826679343, guid: 629d4473db3f00d4c8909a2d817e7c34, type: 3}
+  m_ModificationHash: 0
+  m_Version: 1

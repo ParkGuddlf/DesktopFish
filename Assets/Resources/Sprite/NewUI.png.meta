@@ -904,9 +904,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 16
-        y: 109
+        y: 118
         width: 48
-        height: 40
+        height: 31
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -966,10 +966,10 @@ TextureImporter:
       name: 2_Place23
       rect:
         serializedVersion: 2
-        x: 187
-        y: 120
-        width: 9
-        height: 5
+        x: 186
+        y: 118
+        width: 11
+        height: 6
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -987,10 +987,10 @@ TextureImporter:
       name: 2_Place1
       rect:
         serializedVersion: 2
-        x: 187
-        y: 126
-        width: 9
-        height: 5
+        x: 186
+        y: 125
+        width: 11
+        height: 6
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1009,9 +1009,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 197
-        y: 119
-        width: 7
-        height: 5
+        y: 117
+        width: 11
+        height: 7
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1029,10 +1029,10 @@ TextureImporter:
       name: 2_Weather1
       rect:
         serializedVersion: 2
-        x: 198
-        y: 126
-        width: 7
-        height: 5
+        x: 197
+        y: 125
+        width: 11
+        height: 7
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1050,10 +1050,10 @@ TextureImporter:
       name: 2_Day1
       rect:
         serializedVersion: 2
-        x: 208
-        y: 126
-        width: 7
-        height: 5
+        x: 207
+        y: 125
+        width: 11
+        height: 7
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1071,10 +1071,10 @@ TextureImporter:
       name: 2_Place2
       rect:
         serializedVersion: 2
-        x: 187
-        y: 113
-        width: 9
-        height: 5
+        x: 186
+        y: 109
+        width: 11
+        height: 7
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1092,10 +1092,10 @@ TextureImporter:
       name: 2_Weather2
       rect:
         serializedVersion: 2
-        x: 198
-        y: 113
-        width: 7
-        height: 5
+        x: 197
+        y: 109
+        width: 11
+        height: 7
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1449,10 +1449,10 @@ TextureImporter:
       name: 2_Day2
       rect:
         serializedVersion: 2
-        x: 208
-        y: 121
-        width: 7
-        height: 5
+        x: 207
+        y: 117
+        width: 11
+        height: 7
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1471,9 +1471,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 207
-        y: 114
-        width: 7
-        height: 5
+        y: 109
+        width: 11
+        height: 7
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1504,6 +1504,27 @@ TextureImporter:
       bones: []
       spriteID: adc36fd8904e7bb4aad1135ca27d3c6f
       internalID: 657806427
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 3_CharecterInfoChooseBox
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 109
+        width: 48
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57b91f60d879ccb43ae8cc76d6003410
+      internalID: 452719438
       vertices: []
       indices: 
       edges: []
@@ -1550,6 +1571,7 @@ TextureImporter:
       2_Weather2: 1275413842
       2_Weather3: -367206413
       3_CharecterInfoBox: -400555608
+      3_CharecterInfoChooseBox: 452719438
       3_CharecterSpriteBox: -407477180
       3_LeftArrow: 657704878
       3_RightArrow: 683950737

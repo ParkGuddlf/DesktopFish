@@ -90,7 +90,7 @@ MonoBehaviour:
   currentState: 0
   isThrow: 0
   isCatch: 0
-  isMove: 0
+  isMove: 1
 --- !u!114 &2560083401687334329
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -105,6 +105,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   charecterAnimation: {fileID: 5471956561092044575}
   charecterController: {fileID: 0}
+  spriteRenderer: {fileID: 3864644788525164867}
   spritelibrary: {fileID: 9129113788268278094}
   spriteLibraryAsset:
   - {fileID: 11400000, guid: d71c8dcef17db624a965e48715f52952, type: 2}
@@ -291,7 +292,7 @@ SpriteRenderer:
   m_SortingLayerID: -1165309483
   m_SortingLayer: 3
   m_SortingOrder: 3
-  m_Sprite: {fileID: 775253381, guid: b847189aa86e6ca478bc5676fa219ed6, type: 3}
+  m_Sprite: {fileID: 447114635, guid: b847189aa86e6ca478bc5676fa219ed6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

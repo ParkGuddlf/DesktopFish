@@ -23,6 +23,8 @@ public class CharecterManager : MonoBehaviour
     public CharecterController charecterController;
 
     [SerializeField]
+    SpriteRenderer spriteRenderer;
+    [SerializeField]
     SpriteLibrary spritelibrary;
     [SerializeField]
     SpriteLibraryAsset[] spriteLibraryAsset;
@@ -96,6 +98,7 @@ public class CharecterManager : MonoBehaviour
                 break;
         }
     }
+
     void Fever()
     {
         Managers.Resource.Instantiate("Fever");

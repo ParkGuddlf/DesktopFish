@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Diagnostics;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -23,6 +20,19 @@ public class ItemBoxInfo : UIInfoData
         equipObj.SetActive(GameDataManager.Instance.currentRod.Equals(equipInfo.id));
     }
 
+    public override void DatainfoChange()
+    {
+        base.DatainfoChange();
+        int maxProset = 10000;
+
+        data_info =
+        $"커  먼 {((Mathf.Floor(((float.Parse(equipInfo.probabilitytable[0]) - GameDataManager.Instance.spacialLevel * 5) / maxProset) * 10000)) / 100)} %\n" +
+        $"노  말 {(Mathf.Floor((float.Parse(equipInfo.probabilitytable[1]) / maxProset) * 1000)) / 10} %\n" +
+        $"레  어 {(Mathf.Floor((float.Parse(equipInfo.probabilitytable[2]) / maxProset) * 1000)) / 10} %\n" +
+        $"에  픽 {(Mathf.Floor((float.Parse(equipInfo.probabilitytable[3]) / maxProset) * 1000)) / 10} %\n";
+
+    }
+
     public void SetInfo(EquipData itemIfo, bool isbuy, string item, Sprite sprite)
     {
         equipInfo = itemIfo;
@@ -32,15 +42,6 @@ public class ItemBoxInfo : UIInfoData
         itemKind = item;
         image.sprite = sprite;
         data_Name = equipInfo.name;
-
-        int maxProset = GameDataManager.Instance.spacialLevel + 10000;
-
-        data_info = $"커  먼 {(Mathf.Floor((float.Parse(itemIfo.probabilitytable[0]) / maxProset) * 1000)) / 10} %\n" +
-        $"노  말 {(Mathf.Floor((float.Parse(itemIfo.probabilitytable[1]) / maxProset) * 1000)) / 10} %\n" +
-        $"레  어 {(Mathf.Floor((float.Parse(itemIfo.probabilitytable[2]) / maxProset) * 1000)) / 10} %\n" +
-        $"에  픽 {(Mathf.Floor((float.Parse(itemIfo.probabilitytable[3]) / maxProset) * 1000)) / 10} %\n";
-        //$"스페셜 {GameDataManager.Instance.spacialLevel}\n";
-
         data_sprite = sprite;
     }
     //장비별로 

@@ -48,18 +48,19 @@ public class MainCanvasManager : MonoBehaviour
     bool isMove = false;
     bool isOpen = false;
 
+    [SerializeField] GameObject stateCard;
+
     private void Awake()
     {
         Instance = this;
     }
-
     private void Update()
     {
         goldtext.text = $"{GameDataManager.Instance.gold.ToString("F0")}";
         casttingSpeedCosttext.text = GameDataManager.Instance.castingLevel >= 15 ? $"채집속도\nMax" : $"채집속도\n{Cost(200, GameDataManager.Instance.castingLevel)}";
         attackDelayCosttext.text = GameDataManager.Instance.atkDelayLevel >= 30 ? $"캐스팅주기\nMax" : $"캐스팅주기\n{Cost(100, GameDataManager.Instance.atkDelayLevel)}";
-        goldCostText.text = GameDataManager.Instance.goldLevel >= 15 ? $"골드획득량\nMax" : $"골드획득량\n{Cost(1000, GameDataManager.Instance.goldLevel)}";
-        specialCosttext.text = GameDataManager.Instance.spacialLevel >= 30 ? $"스페셜등급\nMax" : $"스페셜등급\n{Cost(500, GameDataManager.Instance.spacialLevel)}";
+        goldCostText.text = GameDataManager.Instance.goldLevel >= 10 ? $"골드획득량\nMax" : $"골드획득량\n{Cost(500, GameDataManager.Instance.goldLevel)}";
+        specialCosttext.text = GameDataManager.Instance.spacialLevel >= 30 ? $"스페셜등급\nMax" : $"스페셜등급\n{Cost(300, GameDataManager.Instance.spacialLevel,1.2f)}";
         dayImage.sprite = daySprite[(int)GameDataManager.Instance.dayNight-1];
         weatherImage.sprite = weatherSprite[(int)GameDataManager.Instance.lastWeather - 1];
     }
@@ -78,6 +79,7 @@ public class MainCanvasManager : MonoBehaviour
 
     public void OpenUI(bool ison)
     {
+        stateCard.SetActive(false);
         if (isMove || isOpen || ison)
             return;
 
@@ -86,6 +88,7 @@ public class MainCanvasManager : MonoBehaviour
     }
     public void CloseUI(bool ison)
     {
+        stateCard.SetActive(false);
         if (isMove || !isOpen || ison)
             return;
 
@@ -108,7 +111,7 @@ public class MainCanvasManager : MonoBehaviour
     {
         //데이터가지고 온거랑 저장한걸로 상정템 프리팹을 생성한다
         //equipdata정보로 버튼에 정보 넣어주고 흐짜흐짜하기
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(1f);
         int count = 0;
         foreach (EquipData go in GameDataManager.Instance.equipdata["Rod"])
         {
@@ -141,9 +144,9 @@ public class MainCanvasManager : MonoBehaviour
                 }
                 break;
             case 1:
-                if (GameDataManager.Instance.goldLevel < 15)
+                if (GameDataManager.Instance.goldLevel < 10)
                 {
-                    cost = Cost(1000, GameDataManager.Instance.goldLevel);
+                    cost = Cost(500, GameDataManager.Instance.goldLevel);
                     if (cost <= GameDataManager.Instance.gold)
                     {
                         GameManager.instance.EffectSound(2);
@@ -155,13 +158,13 @@ public class MainCanvasManager : MonoBehaviour
             case 2:
                 if (GameDataManager.Instance.spacialLevel < 30)
                 {
-                    cost = Cost(500, GameDataManager.Instance.spacialLevel);
+                    cost = Cost(300, GameDataManager.Instance.spacialLevel,1.2f);
                     if (cost <= GameDataManager.Instance.gold)
                     {
                         GameManager.instance.EffectSound(2);
                         GameDataManager.Instance.gold = -cost;
                         GameDataManager.Instance.spacialLevel += 1;
-                        FishingSystem.instance.percentage[4] = $"{GameDataManager.Instance.spacialLevel * 10}";
+                        FishingSystem.instance.percentage[4] = $"{GameDataManager.Instance.spacialLevel * 5}";
                     }
                 }
                 break;
@@ -179,9 +182,9 @@ public class MainCanvasManager : MonoBehaviour
                 break;
         }
     }
-    int Cost(int baseCost, int data)
+    int Cost(int baseCost, int data, float Interest = 1.5f)
     {
-        return (int)(baseCost * Mathf.Pow(data, 1.5f));
+        return (int)(baseCost * Mathf.Pow(data, Interest));
     }
     //장소변경
     public void PlaceChange(int placeNum)

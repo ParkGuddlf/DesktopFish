@@ -37,7 +37,7 @@ public class GameDataManager : MonoBehaviour
         set
         {
             Gold += value;
-            if(value>0)
+            if (value > 0)
                 earnedGold += value;
         }
     }
@@ -62,7 +62,7 @@ public class GameDataManager : MonoBehaviour
     public int goldLevel
     {
         get { return GoldLevel; }
-        set { GoldLevel = value < 16 ? value : 15; }
+        set { GoldLevel = value < 11 ? value : 10; }
     }
     public int spacialLevel
     {
@@ -193,7 +193,7 @@ public class GameDataManager : MonoBehaviour
         EquipData();
     }
     [HideInInspector]
-    public int totalFish =1;
+    public int totalFish = 1;
     public Dictionary<string, List<FishData>> fishdata = new Dictionary<string, List<FishData>>
     {
         { "Common",new List<FishData>() },
@@ -207,15 +207,19 @@ public class GameDataManager : MonoBehaviour
     {
         string[] rows = sheetData.Split('\n');
 
-        totalFish= rows.Length;
-
-        foreach (string row in rows)
+        totalFish = rows.Length;
+        foreach (var item in fishdata.Keys)
         {
-            string[] cols = row.Split("\t");
-            var data = new FishData() { rare = cols[0], id = cols[1], name = cols[2], hp = float.Parse(cols[3]), place = int.Parse(cols[4]), weather = cols[5], size = int.Parse(cols[6]), time = cols[7].Replace("\r", "") };
-            fishdata[cols[0]].Add(data);
+            foreach (string row in rows)
+            {
+                string[] cols = row.Split("\t");
+                if (cols[0].Equals(item))
+                {
+                    var data = new FishData() { rare = cols[0], id = cols[1], name = cols[2], hp = float.Parse(cols[3]), place = int.Parse(cols[4]), weather = cols[5], size = int.Parse(cols[6]), time = cols[7].Replace("\r", "") };
+                    fishdata[cols[0]].Add(data);
+                }
+            }
         }
-        //FishingSystem.instance.SetFishCatchPossible();
     }
 
     public Dictionary<string, List<EquipData>> equipdata = new Dictionary<string, List<EquipData>>

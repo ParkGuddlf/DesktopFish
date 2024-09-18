@@ -66,7 +66,7 @@ public class WeatherLight : MonoBehaviour
                 FishingSystem.instance.SetFishCatchPossible();
                 gameDataManager.dayTimer = 0;
             }
-            if (gameDataManager.spownTimer / 180f >= 1)
+            if (gameDataManager.spownTimer / 90f >= 1)
             {
                 if (gameDataManager.SeaObjectCount < 11)
                 {
