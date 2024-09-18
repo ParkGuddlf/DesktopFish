@@ -1,7 +1,8 @@
 Pc 방치형 게임
-낚시를 통해 골드를 얻고 장비 및 능력치를 업그래이드하여 다양한 장소에서 물고기잡아 도감을 채우는 게임.
+낚시를 통해 골드를 얻고 장비 및 능력치를 업그래이드하여 다양한 장소에서 물고기잡아 도감을 채우자.
 
-![GTqyKEcbQAASJC4](https://github.com/user-attachments/assets/37524540-45cf-49b4-a0e9-01786b43d420)
+
+![GTqyKEcbQAASJC4](https://github.com/user-attachments/assets/7032ea08-d338-4fa5-943f-c98081b6641b)
 
 
 사용한 에셋, 참조 깃주소
