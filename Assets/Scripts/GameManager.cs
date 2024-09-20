@@ -54,11 +54,15 @@ public class GameManager : BaseScene
     //불러오기 버튼
     public void Load()
     {
-        SaveIsEasyAPI.LoadAll(selected);
-        StartCoroutine(SpanwSetDataCo());
-        StartCoroutine(MainCanvasManager.Instance.SetStoreInfo());
-        //데이터매니저에서 전정된값들 불러와서 지정해주기
-        GameDataManager.Instance.runTimeSecond = (int)SaveIsEasyAPI.ListOfValidSaves()[0].StatisticsTotalTimeInSecondsAsTimeSpan.TotalSeconds;
+        if (SaveIsEasyAPI.GetSceneFile("ExampleScene")!=null)
+        {
+            SaveIsEasyAPI.LoadAll(selected);
+            StartCoroutine(SpanwSetDataCo());
+            StartCoroutine(MainCanvasManager.Instance.SetStoreInfo());
+            //데이터매니저에서 전정된값들 불러와서 지정해주기
+            GameDataManager.Instance.runTimeSecond = (int)SaveIsEasyAPI.ListOfValidSaves()[0].StatisticsTotalTimeInSecondsAsTimeSpan.TotalSeconds;
+            GameObject.Find("StartUi").SetActive(false);
+        }
         
     }
     //캐릭터생성 및 데이터 초기화
